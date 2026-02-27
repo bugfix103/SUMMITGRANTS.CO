@@ -1,0 +1,14 @@
+{
+  "name": "summitgrant-admin-api",
+  "version": "1.0.0",
+  "description": "Local admin API for Summit Grant Solutions (leads, clients, KPIs).",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.6",
+    "express": "^5.2.1",
+    "sqlite3": "^5.1.7"
+  }
+}
