@@ -1,0 +1,74 @@
+campaign_name: "Amber Grant F&B – Grant Virgins (Priority A)"
+purpose: >
+  Cold outreach to women-owned food & beverage businesses (Grant Virgin score 65+)
+  offering a $99 submission-ready Amber Grant draft.
+
+sender:
+  email: "first@summitgrantsolutions.com"   # replace with real sender
+  daily_send_limit: 150                     # start low; increase gradually
+  timezone: "America/New_York"
+
+audience:
+  source: "Apollo/Clay export + Grant Virgin scoring sheet"
+  filters:
+    sector: ["Food"]
+    country: ["United States"]
+    grant_virgin_score_min: 65
+
+warmup:
+  enabled: true
+  provider_managed: true
+  notes: >
+    Let Instantly/Smartlead warm up the domain and inbox for 2–3 weeks,
+    starting at ~10–20 emails/day before ramping toward 150–300/day.
+
+sequence:
+  - step: 1
+    type: "email"
+    day_offset: 0
+    subject_lines:
+      - "Amber Grant: $10k for your {{business_type}} in {{city}}"
+      - "Quick question about $10k for {{business_name}}"
+    body_template_file: "./outreach/email-amber-fnb-cold.md"
+    snippet_section: "Version A – Direct, Short"
+    send_window:
+      days: ["Mon", "Tue", "Wed", "Thu"]
+      time_range: "09:00-13:00"
+
+  - step: 2
+    type: "email"
+    day_offset: 4
+    subject_lines:
+      - "Re: Amber Grant for {{business_name}}"
+    body_template_file: "./outreach/email-amber-fnb-cold.md"
+    snippet_section: "Follow-up 1"
+    send_window:
+      days: ["Mon", "Tue", "Wed", "Thu"]
+      time_range: "10:00-15:00"
+
+  - step: 3
+    type: "email"
+    day_offset: 9
+    subject_lines:
+      - "Last call before Amber Grant deadline"
+    body_template_file: "./outreach/email-amber-fnb-cold.md"
+    snippet_section: "Follow-up 2"
+    send_window:
+      days: ["Mon", "Tue", "Wed"]
+      time_range: "10:00-16:00"
+
+stopping_rules:
+  on_positive_reply: "stop_all_for_lead"
+  on_unsubscribe: "stop_all_for_lead"
+  on_bounce_threshold:
+    rate_percent: 5
+    action: "pause_campaign"
+
+tracking:
+  open_tracking: true
+  link_tracking: true
+
+notes: >
+  Import only Priority A (65+ Grant Virgin score) leads into this campaign.
+  Keep volumes conservative at first and monitor bounce/reply rates weekly.
+
