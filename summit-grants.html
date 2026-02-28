@@ -4,7 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>SummitGrants — Win $10,000+ in Private Business Grants</title>
-<link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;0,900;1,500;1,700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -26,7 +25,7 @@
   --sans:'Outfit',sans-serif;
 }
 
-html{scroll-behavior:smooth}
+html{scroll-behavior:smooth;overflow-x:hidden}
 body{
   font-family:var(--sans);
   background:var(--navy-deep);
@@ -91,6 +90,9 @@ body{
 /* ══ GLASS UTILITIES ══ */
 .glass-card{
   background:rgba(255,255,255,0.055);
+  overflow:hidden;
+  clip-path:inset(0 round 24px);
+  isolation:isolate;
   backdrop-filter:blur(18px) saturate(160%);
   -webkit-backdrop-filter:blur(18px) saturate(160%);
   border:1px solid rgba(212,175,55,0.2);
@@ -105,19 +107,19 @@ body{
 .glass-card::before{
   content:'';position:absolute;inset:0;border-radius:24px;
   background:linear-gradient(135deg,rgba(255,255,255,0.08) 0%,transparent 50%);
-  pointer-events:none;z-index:1;
+  pointer-events:none;z-index:-1;
 }
 .glass-card::after{
   content:'';
   position:absolute;
   top:0;left:-100%;width:100%;height:100%;
-  background:linear-gradient(105deg,transparent 42%,rgba(255,255,255,0.028) 50%,transparent 58%);
-  pointer-events:none;z-index:2;
-  transition:left 0.7s ease;
-  border-radius:24px;
+  background:linear-gradient(105deg,transparent 35%,rgba(255,255,255,0.028) 50%,transparent 65%);
+  pointer-events:none;z-index:-1;
+  transition:left 1s ease;
+  will-change:left;
 }
 .glass-card:hover::after{left:100%;}
-.glass-card{position:relative;overflow:hidden}
+.glass-card{position:relative}
 
 .glass-dark{
   background:rgba(0,8,22,0.78);
@@ -155,19 +157,17 @@ body{
 
 /* ══ NAV ══ */
 nav{
-  position:sticky;top:0;z-index:200;
-  background:rgba(0,6,18,0.88);
-  backdrop-filter:blur(28px) saturate(200%);
-  -webkit-backdrop-filter:blur(28px) saturate(200%);
-  border-bottom:1px solid rgba(212,175,55,0.14);
-  padding:0 56px;
+  position:relative;
+  z-index:10;
+  background:rgba(0,6,18,0.92);
+  backdrop-filter:blur(16px);
+  -webkit-backdrop-filter:blur(16px);
+  border-bottom:1px solid rgba(212,175,55,0.15);
+  padding:10px 48px;
   display:flex;align-items:center;justify-content:space-between;
-  height:88px;
-  transition:height 0.3s ease,background 0.3s;
 }
-nav.scrolled{height:88px;background:rgba(0,4,14,0.95)}
 .nav-logo img{
-  height:72px;width:auto;
+  height:54px;width:auto;
   filter:drop-shadow(0 0 18px rgba(212,175,55,0.32));
   transition:filter 0.3s,transform 0.3s;
 }
@@ -176,10 +176,10 @@ nav.scrolled{height:88px;background:rgba(0,4,14,0.95)}
   transform:scale(1.03);
 }
 .nav-logo{text-decoration:none}
-.nav-links{display:flex;align-items:center;gap:50px}
+.nav-links{display:flex;align-items:center;gap:44px}
 .nav-links a{
   color:rgba(255,255,255,0.62);text-decoration:none;
-  font-size:11.5px;font-weight:600;letter-spacing:0.11em;text-transform:uppercase;
+  font-size:12.5px;font-weight:600;letter-spacing:0.09em;text-transform:uppercase;
   transition:color 0.2s;position:relative;
 }
 .nav-links a::after{
@@ -219,7 +219,7 @@ nav.scrolled{height:88px;background:rgba(0,4,14,0.95)}
   animation:halo-pulse 6s ease-in-out infinite;
 }
 @keyframes halo-pulse{0%,100%{opacity:0.7;transform:translate(-50%,-50%)scale(1)}50%{opacity:1;transform:translate(-50%,-50%)scale(1.08)}}
-.hero-content{max-width:880px;text-align:center;position:relative;z-index:2}
+.hero-content{max-width:860px;width:100%;text-align:center;position:relative;z-index:2}
 
 .eyebrow-pill{
   display:inline-flex;align-items:center;gap:9px;
@@ -234,8 +234,8 @@ nav.scrolled{height:88px;background:rgba(0,4,14,0.95)}
 }
 .hero h1{
   font-family:var(--serif);
-  font-size:clamp(2.5rem,5.4vw,4.8rem);
-  font-weight:700;line-height:1.1;
+  font-size:clamp(2.1rem,4.2vw,3.8rem);
+  font-weight:700;line-height:1.12;
   color:var(--white);
   margin-bottom:30px;letter-spacing:-0.01em;
 }
@@ -250,7 +250,7 @@ nav.scrolled{height:88px;background:rgba(0,4,14,0.95)}
 @keyframes text-shine{0%{background-position:0%center}100%{background-position:200%center}}
 
 .hero-sub{
-  font-size:1.06rem;line-height:1.78;
+  font-size:1.15rem;line-height:1.82;
   color:rgba(255,255,255,0.66);
   max-width:660px;margin:0 auto 48px;font-weight:300;
 }
@@ -372,7 +372,7 @@ section{position:relative;padding:100px 56px}
 
 /* ══ AMBER ══ */
 .amber-box{
-  max-width:900px;margin:0 auto;
+  max-width:900px;width:100%;margin:0 auto;
   padding:60px 68px;
 }
 .amber-box h2{
@@ -407,7 +407,7 @@ section{position:relative;padding:100px 56px}
 /* ══ HOW IT WORKS — parallax cards ══ */
 .steps{
   display:grid;grid-template-columns:repeat(3,1fr);
-  gap:28px;max-width:1130px;margin:0 auto;
+  gap:28px;max-width:1130px;width:100%;margin:0 auto;
 }
 .step-card{
   padding:52px 38px;text-align:center;
@@ -436,7 +436,7 @@ section{position:relative;padding:100px 56px}
 .step-card p strong{color:var(--gold-lt);font-weight:700}
 
 /* ══ PRICING ══ */
-.pricing-wrap{max-width:740px;margin:0 auto;position:relative}
+.pricing-wrap{max-width:100%;margin:0 auto;position:relative}
 .pricing-border{
   position:relative;overflow:hidden;border-radius:26px;padding:3px;
 }
@@ -499,7 +499,7 @@ section{position:relative;padding:100px 56px}
 /* ══ WHO IT'S FOR ══ */
 .niches{
   display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));
-  gap:20px;max-width:1130px;margin:0 auto 90px;
+  gap:20px;max-width:1130px;width:100%;margin:0 auto 90px;
 }
 .niche-card{
   padding:34px 28px;border-radius:18px;
@@ -525,7 +525,7 @@ section{position:relative;padding:100px 56px}
 /* ══ TESTIMONIALS ══ */
 .testi-grid{
   display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));
-  gap:26px;max-width:1130px;margin:0 auto;
+  gap:26px;max-width:1130px;width:100%;margin:0 auto;
 }
 .testi-card{
   padding:40px 36px;
@@ -561,7 +561,7 @@ section{position:relative;padding:100px 56px}
 /* ══ FAQ ══ */
 .faq-grid{
   display:grid;grid-template-columns:repeat(auto-fit,minmax(315px,1fr));
-  gap:20px;max-width:1080px;margin:0 auto;
+  gap:20px;max-width:1080px;width:100%;margin:0 auto;
 }
 .faq-item{
   padding:34px 36px;
@@ -584,7 +584,7 @@ section{position:relative;padding:100px 56px}
   animation:halo-pulse 7s ease-in-out infinite;
 }
 .final-box{
-  max-width:820px;margin:0 auto;
+  max-width:820px;width:100%;margin:0 auto;
   padding:80px 68px;position:relative;z-index:2;
 }
 .final-box h2{
@@ -635,62 +635,25 @@ footer a:hover{color:var(--gold)}
 
 /* ══ PARALLAX SCROLL REVEALS ══ */
 .reveal{
-  opacity:0;
+  opacity:1;
   transition:opacity 0.85s cubic-bezier(0.16,1,0.3,1),transform 0.85s cubic-bezier(0.16,1,0.3,1);
 }
-.reveal.from-bottom{transform:translateY(50px)}
-.reveal.from-left{transform:translateX(-50px)}
-.reveal.from-right{transform:translateX(50px)}
-.reveal.scale-in{transform:scale(0.9) translateY(20px)}
+.reveal.waiting{
+  opacity:0;
+}
+.reveal.from-bottom.waiting{transform:translateY(50px)}
+.reveal.from-left.waiting{transform:translateX(-50px)}
+.reveal.from-right.waiting{transform:translateX(50px)}
+.reveal.scale-in.waiting{transform:scale(0.9) translateY(20px)}
 .reveal.up{opacity:1 !important;transform:none !important}
 
 /* ══ RESPONSIVE ══ */
-@media(max-width:980px){
-  nav{padding:0 28px;height:88px}
-  nav.scrolled{height:88px}
-  .nav-logo img{height:72px}
-  section{padding:80px 28px}
-  .steps{grid-template-columns:1fr}
-  .pricing-inner{padding:52px 32px}
-  .amber-box{padding:44px 32px}
-  .final-box{padding:56px 32px}
-  .hero{padding:60px 28px}
-}
-@media(max-width:620px){
-  nav{height:88px;padding:0 20px}
-  .nav-logo img{height:72px}
-  .nav-links{display:none}
-  .hero-timer{flex-direction:column;align-items:center}
-  footer{flex-direction:column;text-align:center;align-items:center;padding:40px 24px}
-  .footer-logo img{height:80px}
-}
-
 /* ══ PARALLAX GLASS LIFT ══ */
 .parallax-card{
   transform-style:preserve-3d;
   will-change:transform;
 }
-/* Floating ambient shards */
-.shard{
-  position:fixed;border-radius:50%;
-  background:linear-gradient(135deg,rgba(212,175,55,0.08),rgba(212,175,55,0.02));
-  backdrop-filter:blur(4px);
-  border:1px solid rgba(212,175,55,0.12);
-  pointer-events:none;z-index:1;
-  animation:float-shard linear infinite;
-  display:none;
-}
-.shard1{width:160px;height:160px;top:15%;left:5%;animation-duration:25s;animation-delay:0s}
-.shard2{width:90px;height:90px;top:55%;right:4%;animation-duration:18s;animation-delay:-7s}
-.shard3{width:120px;height:120px;top:80%;left:12%;animation-duration:22s;animation-delay:-12s}
-.shard4{width:70px;height:70px;top:30%;right:8%;animation-duration:15s;animation-delay:-4s}
-@keyframes float-shard{
-  0%{transform:translate(0,0) rotate(0deg);opacity:0.4}
-  25%{transform:translate(15px,-25px) rotate(90deg);opacity:0.7}
-  50%{transform:translate(5px,-50px) rotate(180deg);opacity:0.3}
-  75%{transform:translate(-10px,-30px) rotate(270deg);opacity:0.6}
-  100%{transform:translate(0,0) rotate(360deg);opacity:0.4}
-}
+/* ambient shards removed */
 /* ══ GLOW ON HOVER FOR GLASS CARDS ══ */
 .step-card,.testi-card,.faq-item,.niche-card{
   transform-origin:center center;
@@ -698,10 +661,9 @@ footer a:hover{color:var(--gold)}
 }
 /* ══ SCROLL PARALLAX LIFT ══ */
 .lift-on-scroll{
-  opacity:0;
-  transform:translateY(50px) scale(0.97);
-  transition:opacity 0.8s cubic-bezier(0.23,1,0.32,1),
-             transform 0.8s cubic-bezier(0.23,1,0.32,1);
+  opacity:1;
+  transform:none;
+  transition:transform 0.8s cubic-bezier(0.23,1,0.32,1);
 }
 .lift-on-scroll.risen{
   opacity:1;
@@ -748,6 +710,236 @@ nav::after{
   pointer-events:none;
 }
 
+
+/* ══ FLOATING AMBIENT SHARDS (contained, beautiful) ══ */
+.shard{
+  position:fixed;border-radius:50%;
+  pointer-events:none;z-index:1;
+  animation:float-shard ease-in-out infinite;
+}
+.shard1{
+  width:200px;height:200px;top:12%;left:3%;
+  background:radial-gradient(circle at 35% 35%,rgba(212,175,55,0.12),rgba(212,175,55,0.03) 60%,transparent);
+  border:1px solid rgba(212,175,55,0.1);
+  backdrop-filter:blur(2px);
+  animation-duration:28s;animation-delay:0s;
+}
+.shard2{
+  width:110px;height:110px;top:52%;right:3%;
+  background:radial-gradient(circle at 40% 40%,rgba(212,175,55,0.1),rgba(0,45,90,0.08) 60%,transparent);
+  border:1px solid rgba(212,175,55,0.08);
+  backdrop-filter:blur(1px);
+  animation-duration:20s;animation-delay:-6s;
+}
+.shard3{
+  width:150px;height:150px;top:75%;left:8%;
+  background:radial-gradient(circle at 30% 30%,rgba(255,255,255,0.04),rgba(212,175,55,0.05) 50%,transparent);
+  border:1px solid rgba(255,255,255,0.06);
+  animation-duration:24s;animation-delay:-14s;
+}
+.shard4{
+  width:80px;height:80px;top:28%;right:6%;
+  background:radial-gradient(circle,rgba(212,175,55,0.09),transparent 70%);
+  border:1px solid rgba(212,175,55,0.07);
+  animation-duration:16s;animation-delay:-3s;
+}
+@keyframes float-shard{
+  0%{transform:translate(0,0) rotate(0deg);opacity:0.5}
+  25%{transform:translate(12px,-20px) rotate(45deg);opacity:0.8}
+  50%{transform:translate(4px,-38px) rotate(90deg);opacity:0.4}
+  75%{transform:translate(-8px,-22px) rotate(135deg);opacity:0.7}
+  100%{transform:translate(0,0) rotate(180deg);opacity:0.5}
+}
+
+
+/* ═══════════════════════════════════════════
+   RESPONSIVE — TABLET (max 960px)
+═══════════════════════════════════════════ */
+@media(max-width:960px){
+  nav{padding:8px 24px}
+  section{padding:70px 28px}
+  .hero{padding:60px 24px 50px}
+  .hero-glass{padding:48px 36px}
+  .steps{grid-template-columns:1fr;gap:20px}
+  .pricing-inner{padding:52px 32px}
+  .amber-box{padding:40px 32px}
+  .final-box{padding:52px 32px}
+  .testi-grid{grid-template-columns:1fr}
+  .faq-grid{grid-template-columns:1fr}
+  .niches{grid-template-columns:repeat(2,1fr)}
+  .elig-grid{grid-template-columns:repeat(2,1fr)}
+  .pricing-wrap{max-width:100%}
+  .trust-row{gap:16px}
+  footer{padding:36px 28px;gap:14px}
+}
+
+/* ═══════════════════════════════════════════
+   RESPONSIVE — MOBILE (max 600px)
+═══════════════════════════════════════════ */
+@media(max-width:600px){
+  /* NAV */
+  nav{padding:8px 16px}
+  .nav-links{display:none}
+  .nav-mobile-cta{display:inline-flex;align-items:center}
+  .nav-logo img{height:44px}
+
+  /* ANNOUNCE */
+  .announce{font-size:10.5px;padding:10px 12px;letter-spacing:0.06em}
+
+  /* HERO */
+  .hero{padding:40px 16px 40px;min-height:auto;height:auto}
+  .hero-glass{
+    padding:36px 20px;
+    border-radius:18px;
+  }
+  .hero h1{font-size:clamp(1.75rem,7.5vw,2.4rem);margin-bottom:18px}
+  .hero h1 em{display:inline}
+  .eyebrow-pill{font-size:10px;padding:7px 14px;margin-bottom:20px}
+  .hero-sub{font-size:0.92rem;margin-bottom:28px;max-width:100%}
+
+  /* HERO CTA BUTTON */
+  .btn-gold{
+    font-size:0.9rem;
+    padding:16px 24px;
+    width:100%;
+    justify-content:center;
+    border-radius:10px;
+    text-align:center;
+  }
+
+  /* HERO TIMER */
+  .hero-timer{
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:6px;
+    margin-top:24px;
+  }
+  .timer-block{padding:10px 12px;min-width:58px}
+  .timer-num{font-size:1.4rem}
+  .scarcity-pill{
+    margin-left:0;
+    margin-top:8px;
+    font-size:11px;
+    padding:8px 14px;
+    width:100%;
+    justify-content:center;
+  }
+
+  /* TRUST ROW */
+  .trust-row{
+    gap:10px;
+    flex-direction:column;
+    align-items:flex-start;
+    padding-left:8px;
+  }
+
+  /* SECTIONS */
+  section{padding:52px 16px}
+  .sec-title{font-size:clamp(1.6rem,6.5vw,2.2rem)}
+  .sec-sub{font-size:0.9rem}
+  .gold-rule{margin:24px auto}
+
+  /* AMBER BOX */
+  .amber-box{padding:28px 20px;border-radius:16px}
+  .amber-box h2{font-size:clamp(1.4rem,6vw,1.9rem)}
+  .amber-box p{font-size:0.88rem}
+  .elig-grid{grid-template-columns:1fr 1fr;gap:10px}
+  .elig-chip{padding:12px 14px;font-size:12px;gap:8px}
+
+  /* HOW IT WORKS */
+  .steps{grid-template-columns:1fr;gap:16px}
+  .step-card{padding:32px 24px}
+  .step-n{font-size:3rem}
+  .step-em{font-size:1.8rem;margin-bottom:14px}
+  .step-card h3{font-size:1.15rem}
+  .step-card p{font-size:0.88rem}
+
+  /* PRICING */
+  .pricing-wrap{max-width:100%}
+  .pricing-border{border-radius:16px}
+  .pricing-inner{padding:36px 20px;border-radius:14px}
+  .price-big{font-size:4.5rem}
+  .price-dollar{font-size:1.6rem;margin-top:10px}
+  .price-note{font-size:0.82rem;margin-bottom:28px}
+  .features li{font-size:0.88rem;gap:10px}
+  .feat-icon{width:19px;height:19px;font-size:9px;flex-shrink:0}
+  .risk-box{padding:16px 18px;font-size:0.88rem;margin-bottom:28px}
+
+  /* NICHES */
+  .niches{grid-template-columns:1fr 1fr;gap:12px}
+  .niche-card{padding:22px 16px}
+  .niche-icon{font-size:2rem;margin-bottom:10px}
+  .niche-card h4{font-size:0.95rem}
+  .niche-card p{font-size:0.8rem}
+
+  /* TESTIMONIALS */
+  .testi-grid{grid-template-columns:1fr;gap:16px}
+  .testi-card{padding:28px 20px}
+  .testi-q{font-size:0.92rem}
+  .testi-q::before{font-size:2rem}
+  .avatar{width:42px;height:42px;font-size:1rem}
+  .author-name{font-size:0.88rem}
+  .author-role{font-size:0.75rem}
+
+  /* FAQ */
+  .faq-grid{grid-template-columns:1fr;gap:14px}
+  .faq-item{padding:22px 18px}
+  .faq-q{font-size:0.95rem}
+  .faq-a{font-size:0.85rem}
+
+  /* FINAL CTA */
+  .final-section{padding:52px 16px}
+  .final-box{padding:36px 20px;border-radius:18px}
+  .final-box h2{font-size:clamp(1.5rem,7vw,2.2rem)}
+  .final-box p{font-size:0.9rem;margin-bottom:30px}
+  .final-timer{gap:5px;margin-bottom:30px}
+  .final-timer .timer-block{min-width:52px;padding:9px 10px}
+  .final-timer .timer-num{font-size:1.25rem}
+  .pricing-border::before{animation:none}
+  .micro-lock{font-size:10px;flex-wrap:wrap;justify-content:center;gap:4px}
+
+  /* FOOTER */
+  footer{
+    flex-direction:column;
+    text-align:center;
+    align-items:center;
+    padding:32px 16px;
+    gap:12px;
+  }
+  .footer-logo img{height:44px}
+  .footer-disclaimer{font-size:10px;line-height:1.6}
+
+  /* HIDE AMBIENT SHARDS on tiny screens for perf */
+  .shard3,.shard4{display:none}
+  .shard1{width:120px;height:120px}
+  .shard2{width:70px;height:70px}
+}
+
+/* ═══════════════════════════════════════════
+   EXTRA SMALL (max 380px)
+═══════════════════════════════════════════ */
+@media(max-width:380px){
+  .hero-glass{padding:28px 16px}
+  .hero h1{font-size:1.65rem}
+  .elig-grid{grid-template-columns:1fr}
+  .niches{grid-template-columns:1fr}
+  .hero-timer .timer-colon{display:none}
+  .timer-block{min-width:52px}
+}
+
+
+/* Mobile-only nav CTA (shown when links are hidden) */
+.nav-mobile-cta{
+  display:none;
+  background:linear-gradient(135deg,var(--gold) 0%,var(--gold-lt) 100%);
+  color:var(--navy-deep);
+  font-size:11px;font-weight:800;letter-spacing:0.07em;
+  text-transform:uppercase;text-decoration:none;
+  padding:9px 16px;border-radius:7px;
+  box-shadow:0 3px 14px rgba(212,175,55,0.35);
+  white-space:nowrap;
+}
+
 </style>
 </head>
 <body>
@@ -766,6 +958,10 @@ nav::after{
 <div class="shard shard3"></div>
 <div class="shard shard4"></div>
 
+
+
+
+
 <!-- ANNOUNCE -->
 <div class="announce">
   <span class="pdot"></span>
@@ -782,14 +978,15 @@ nav::after{
     <a href="#pricing">Pricing</a>
     <a href="#proof">Results</a>
     <a href="#faq">FAQ</a>
-    <a href="https://pay.airwallex.com/sghg7x7oc7k2" class="nav-btn">Get $99 Draft →</a>
+    <a href="https://pay.airwallex.com/sghg7x7oc7k2" target="_blank" rel="noopener" class="nav-btn">Get $99 Draft →</a>
   </div>
+  <a href="https://pay.airwallex.com/sghg7x7oc7k2" target="_blank" rel="noopener" class="nav-mobile-cta">Get Draft $99</a>
 </nav>
 
 <!-- ═══ HERO ═══ -->
 <section class="hero" id="hero">
   <div class="hero-halo"></div>
-  <div class="hero-content hero-glass lift-on-scroll">
+  <div class="hero-content hero-glass">
     <div class="eyebrow-pill reveal from-bottom">
       <span class="pdot"></span>
       Amber Grant &amp; Hello Alice — March Applications Open
@@ -808,7 +1005,7 @@ nav::after{
     </p>
 
     <div class="reveal from-bottom" style="transition-delay:0.3s">
-      <a href="https://pay.airwallex.com/sghg7x7oc7k2" class="btn-gold">✦ Claim My $99 Draft Before March 31 →</a>
+      <a href="https://pay.airwallex.com/sghg7x7oc7k2" target="_blank" rel="noopener" class="btn-gold">✦ Claim My $99 Draft Before March 31 →</a>
     </div>
 
     <div class="hero-timer reveal from-bottom" style="transition-delay:0.42s">
@@ -902,7 +1099,7 @@ nav::after{
         <div class="risk-box">
           🔒 No win = No extra cost &nbsp;·&nbsp; No equity taken &nbsp;·&nbsp; No hidden fees &nbsp;·&nbsp; No subscriptions. Ever.
         </div>
-        <a href="https://pay.airwallex.com/sghg7x7oc7k2" class="btn-gold">Secure My $99 Draft Now →</a>
+        <a href="https://pay.airwallex.com/sghg7x7oc7k2" target="_blank" rel="noopener" class="btn-gold">Secure My $99 Draft Now →</a>
         <div class="micro-lock" style="margin-top:20px">
           <span class="lock-icon">🔒</span> Secure checkout via Stripe &nbsp;·&nbsp; Instant confirmation
         </div>
@@ -982,7 +1179,7 @@ nav::after{
       <span class="timer-colon">:</span>
       <div class="timer-block"><span class="timer-num" id="f-sec">--</span><span class="timer-label">Secs</span></div>
     </div>
-    <a href="https://pay.airwallex.com/sghg7x7oc7k2" class="btn-gold">Get My $99 Draft Before It's Gone →</a>
+    <a href="https://pay.airwallex.com/sghg7x7oc7k2" target="_blank" rel="noopener" class="btn-gold">Get My $99 Draft Before It's Gone →</a>
     <div class="micro-lock">
       <span class="lock-icon">🔒</span> Secure checkout via Stripe &nbsp;·&nbsp; Instant confirmation &nbsp;·&nbsp; 48-hr delivery guaranteed
     </div>
@@ -996,7 +1193,7 @@ nav::after{
   </div>
   <div>
     <strong style="color:rgba(255,255,255,0.52)">SummitGrants</strong> &nbsp;·&nbsp;
-    <a href="mailto:contact@summitgrants.co">contact@summitgrants.co</a> &nbsp;·&nbsp;
+    <a href="/cdn-cgi/l/email-protection#1b7874756f7a786f5b686e7676726f7c697a756f68357874"><span class="__cf_email__" data-cfemail="bdded2d3c9dcdec9fdcec8d0d0d4c9dacfdcd3c9ce93ded2">[email&#160;protected]</span></a> &nbsp;·&nbsp;
     <a href="#">Privacy Policy</a> &nbsp;·&nbsp;
     <a href="#">Terms of Service</a>
   </div>
@@ -1008,7 +1205,7 @@ nav::after{
 
 </div>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 // ─── COUNTDOWN TIMER ───
 function getT(){
   const d=new Date('2026-03-31T23:59:59'),n=new Date(),r=d-n;
@@ -1026,20 +1223,29 @@ function tick(){
 tick();setInterval(tick,1000);
 
 // ─── SCROLL REVEAL ───
+// Scroll reveal — elements are visible by default, animation is a bonus
+// Add subtle lift animation to off-screen elements only
 const revObs=new IntersectionObserver(entries=>{
-  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('up')});
-},{threshold:0.08,rootMargin:'0px 0px -40px 0px'});
-document.querySelectorAll('.reveal').forEach(el=>revObs.observe(el));
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.remove('waiting');e.target.classList.add('up');}});
+},{threshold:0.01,rootMargin:'0px 0px -20px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>{
+  const r=el.getBoundingClientRect();
+  // Only animate elements below the fold
+  if(r.top > window.innerHeight){
+    el.classList.add('from-bottom','waiting');
+    revObs.observe(el);
+  } else {
+    el.classList.add('up');
+  }
+});
 
 // ─── SCROLL PARALLAX LIFT ───
+// lift-on-scroll — just a subtle translateY for below-fold elements
 const liftObs=new IntersectionObserver(entries=>{
-  entries.forEach(e=>{
-    if(e.isIntersecting) e.target.classList.add('risen');
-  });
-},{threshold:0.08,rootMargin:'0px 0px -30px 0px'});
+  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('risen');});
+},{threshold:0.01});
 document.querySelectorAll('.lift-on-scroll').forEach((el,i)=>{
-  el.style.transitionDelay=(i%4)*0.08+'s';
-  liftObs.observe(el);
+  el.classList.add('risen'); // Always visible
 });
 
 // ─── PREMIUM 3D GLASS TILT ───
@@ -1052,32 +1258,22 @@ document.addEventListener('mousemove',ev=>{
       rafId=null;
       const cx=window.innerWidth/2,cy=window.innerHeight/2;
       const dx=(mouseX-cx)/cx,dy=(mouseY-cy)/cy;
-      document.querySelectorAll('.parallax-card').forEach((el)=>{
-        const rect=el.getBoundingClientRect();
-        if(rect.bottom<0||rect.top>window.innerHeight)return;
-        const cardCx=rect.left+rect.width/2;
-        const cardCy=rect.top+rect.height/2;
-        const cardDx=(mouseX-cardCx)/rect.width;
-        const cardDy=(mouseY-cardCy)/rect.height;
-        const dist=Math.sqrt((mouseX-cardCx)**2+(mouseY-cardCy)**2);
-        const factor=Math.max(0,1-dist/650);
-        el.style.transform=`perspective(1200px) rotateX(${cardDy*-4*factor}deg) rotateY(${cardDx*4*factor}deg) translateZ(${factor*4}px)`;
-        el.style.transition='transform 0.12s ease';
-        el.style.boxShadow=factor>0.55?
-          `0 14px 34px rgba(0,0,0,0.45),0 0 ${12*factor}px rgba(212,175,55,${0.08*factor}),0 2px 0 rgba(255,255,255,0.08) inset`:'';
+      // No card tilt — shards only
+      document.querySelectorAll('.shard').forEach((el,i)=>{
+        const speed=(i+1)*0.018;
+        el.style.transform=`translate(${dx*35*speed}px,${dy*25*speed}px) rotate(${dx*20*speed}deg)`;
+        el.style.transition='transform 0.05s linear';
       });
-      // Keep the glass effect local to the tiles only.
+      document.querySelectorAll('.orb').forEach((el,i)=>{
+        const speed=(i+1)*0.01;
+        el.style.transform=`translate(${dx*40*speed}px,${dy*30*speed}px)`;
+        el.style.transition='transform 0.1s linear';
+      });
     });
   }
 });
 
-document.addEventListener('mouseleave',()=>{
-  document.querySelectorAll('.parallax-card').forEach(el=>{
-    el.style.transform='perspective(1200px) rotateX(0) rotateY(0) translateZ(0)';
-    el.style.transition='transform 0.7s cubic-bezier(0.23,1,0.32,1)';
-    el.style.boxShadow='';
-  });
-});
+// mouse leave - no tilt to reset
 
 // ─── SCROLL-DRIVEN DEPTH PARALLAX ───
 let lastScroll=window.scrollY;
@@ -1085,12 +1281,11 @@ window.addEventListener('scroll',()=>{
   const scrollY=window.scrollY;
   lastScroll=scrollY;
   
-  // Hero glass scale + fade
+  // Hero - subtle translateY only, no opacity dim, no scale
   const hero=document.querySelector('.hero-glass');
   if(hero&&scrollY<window.innerHeight){
-    const progress=scrollY/window.innerHeight;
-    hero.style.transform=`scale(${1-progress*0.01}) translateY(${scrollY*0.03}px)`;
-    hero.style.opacity='1';
+    hero.style.transform=`translateY(${scrollY*0.08}px)`;
+    hero.style.opacity=1;
   }
   
   // Card scroll parallax
@@ -1099,8 +1294,8 @@ window.addEventListener('scroll',()=>{
     const vh=window.innerHeight;
     if(rect.bottom<-100||rect.top>vh+100)return;
     const progress=(vh-rect.top)/(vh+rect.height);
-    const offset=(progress-0.5)*-20*(i%2===0?1:-0.8);
-    if(!el.classList.contains('parallax-card')||!el.style.transform.includes('rotateX')){
+      const offset=(progress-0.5)*-10*(i%2===0?1:-0.6);
+    if(!el.classList.contains('parallax-card')){
       el.style.transform=`translateY(${offset}px)`;
     }
   });
