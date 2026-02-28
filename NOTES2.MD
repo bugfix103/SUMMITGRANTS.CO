@@ -1,4 +1,3 @@
-Mr Bot:
 
 \# Summit Grant Solutions - Company Knowledge Base
 
