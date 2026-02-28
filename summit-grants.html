@@ -110,13 +110,13 @@ body{
   content:'';
   position:absolute;
   top:0;left:-100%;width:100%;height:100%;
-  background:linear-gradient(105deg,transparent 40%,rgba(255,255,255,0.045) 50%,transparent 60%);
+  background:linear-gradient(105deg,transparent 42%,rgba(255,255,255,0.028) 50%,transparent 58%);
   pointer-events:none;z-index:2;
-  transition:left 0.9s ease;
+  transition:left 0.7s ease;
   border-radius:24px;
 }
 .glass-card:hover::after{left:100%;}
-.glass-card{position:relative}
+.glass-card{position:relative;overflow:hidden}
 
 .glass-dark{
   background:rgba(0,8,22,0.78);
@@ -161,12 +161,12 @@ nav{
   border-bottom:1px solid rgba(212,175,55,0.14);
   padding:0 56px;
   display:flex;align-items:center;justify-content:space-between;
-  height:175px; /* doubled from previous 74px */
+  height:88px;
   transition:height 0.3s ease,background 0.3s;
 }
-nav.scrolled{height:100px;background:rgba(0,4,14,0.95)}
+nav.scrolled{height:88px;background:rgba(0,4,14,0.95)}
 .nav-logo img{
-  height:144px;width:auto; /* doubled from 65px */
+  height:72px;width:auto;
   filter:drop-shadow(0 0 18px rgba(212,175,55,0.32));
   transition:filter 0.3s,transform 0.3s;
 }
@@ -175,10 +175,10 @@ nav.scrolled{height:100px;background:rgba(0,4,14,0.95)}
   transform:scale(1.03);
 }
 .nav-logo{text-decoration:none}
-.nav-links{display:flex;align-items:center;gap:36px}
+.nav-links{display:flex;align-items:center;gap:50px}
 .nav-links a{
   color:rgba(255,255,255,0.62);text-decoration:none;
-  font-size:12.5px;font-weight:600;letter-spacing:0.09em;text-transform:uppercase;
+  font-size:11.5px;font-weight:600;letter-spacing:0.11em;text-transform:uppercase;
   transition:color 0.2s;position:relative;
 }
 .nav-links a::after{
@@ -233,7 +233,7 @@ nav.scrolled{height:100px;background:rgba(0,4,14,0.95)}
 }
 .hero h1{
   font-family:var(--serif);
-  font-size:clamp(2.7rem,5.8vw,5.2rem);
+  font-size:clamp(2.5rem,5.4vw,4.8rem);
   font-weight:700;line-height:1.1;
   color:var(--white);
   margin-bottom:30px;letter-spacing:-0.01em;
@@ -249,7 +249,7 @@ nav.scrolled{height:100px;background:rgba(0,4,14,0.95)}
 @keyframes text-shine{0%{background-position:0%center}100%{background-position:200%center}}
 
 .hero-sub{
-  font-size:1.15rem;line-height:1.82;
+  font-size:1.06rem;line-height:1.78;
   color:rgba(255,255,255,0.66);
   max-width:660px;margin:0 auto 48px;font-weight:300;
 }
@@ -645,9 +645,9 @@ footer a:hover{color:var(--gold)}
 
 /* ══ RESPONSIVE ══ */
 @media(max-width:980px){
-  nav{padding:0 28px;height:175px}
-  nav.scrolled{height:80px}
-  .nav-logo img{height:144px}
+  nav{padding:0 28px;height:88px}
+  nav.scrolled{height:88px}
+  .nav-logo img{height:72px}
   section{padding:80px 28px}
   .steps{grid-template-columns:1fr}
   .pricing-inner{padding:52px 32px}
@@ -656,8 +656,8 @@ footer a:hover{color:var(--gold)}
   .hero{padding:60px 28px}
 }
 @media(max-width:620px){
-  nav{height:175px;padding:0 20px}
-  .nav-logo img{height:144px}
+  nav{height:88px;padding:0 20px}
+  .nav-logo img{height:72px}
   .nav-links{display:none}
   .hero-timer{flex-direction:column;align-items:center}
   footer{flex-direction:column;text-align:center;align-items:center;padding:40px 24px}
@@ -677,6 +677,7 @@ footer a:hover{color:var(--gold)}
   border:1px solid rgba(212,175,55,0.12);
   pointer-events:none;z-index:1;
   animation:float-shard linear infinite;
+  display:none;
 }
 .shard1{width:160px;height:160px;top:15%;left:5%;animation-duration:25s;animation-delay:0s}
 .shard2{width:90px;height:90px;top:55%;right:4%;animation-duration:18s;animation-delay:-7s}
@@ -780,7 +781,7 @@ nav::after{
     <a href="#pricing">Pricing</a>
     <a href="#proof">Results</a>
     <a href="#faq">FAQ</a>
-    <a href="#pricing" class="nav-btn">Get $99 Draft →</a>
+    <a href="https://pay.airwallex.com/sghg7x7oc7k2" class="nav-btn">Get $99 Draft →</a>
   </div>
 </nav>
 
@@ -806,7 +807,7 @@ nav::after{
     </p>
 
     <div class="reveal from-bottom" style="transition-delay:0.3s">
-      <a href="#pricing" class="btn-gold">✦ Claim My $99 Draft Before March 31 →</a>
+      <a href="https://pay.airwallex.com/sghg7x7oc7k2" class="btn-gold">✦ Claim My $99 Draft Before March 31 →</a>
     </div>
 
     <div class="hero-timer reveal from-bottom" style="transition-delay:0.42s">
@@ -900,7 +901,7 @@ nav::after{
         <div class="risk-box">
           🔒 No win = No extra cost &nbsp;·&nbsp; No equity taken &nbsp;·&nbsp; No hidden fees &nbsp;·&nbsp; No subscriptions. Ever.
         </div>
-        <a href="#" class="btn-gold">Secure My $99 Draft Now →</a>
+        <a href="https://pay.airwallex.com/sghg7x7oc7k2" class="btn-gold">Secure My $99 Draft Now →</a>
         <div class="micro-lock" style="margin-top:20px">
           <span class="lock-icon">🔒</span> Secure checkout via Stripe &nbsp;·&nbsp; Instant confirmation
         </div>
@@ -980,7 +981,7 @@ nav::after{
       <span class="timer-colon">:</span>
       <div class="timer-block"><span class="timer-num" id="f-sec">--</span><span class="timer-label">Secs</span></div>
     </div>
-    <a href="#" class="btn-gold">Get My $99 Draft Before It's Gone →</a>
+    <a href="https://pay.airwallex.com/sghg7x7oc7k2" class="btn-gold">Get My $99 Draft Before It's Gone →</a>
     <div class="micro-lock">
       <span class="lock-icon">🔒</span> Secure checkout via Stripe &nbsp;·&nbsp; Instant confirmation &nbsp;·&nbsp; 48-hr delivery guaranteed
     </div>
@@ -1058,22 +1059,13 @@ document.addEventListener('mousemove',ev=>{
         const cardDx=(mouseX-cardCx)/rect.width;
         const cardDy=(mouseY-cardCy)/rect.height;
         const dist=Math.sqrt((mouseX-cardCx)**2+(mouseY-cardCy)**2);
-        const factor=Math.max(0,1-dist/500);
-        el.style.transform=`perspective(1200px) rotateX(${cardDy*-10*factor}deg) rotateY(${cardDx*10*factor}deg) translateZ(${factor*10}px)`;
+        const factor=Math.max(0,1-dist/650);
+        el.style.transform=`perspective(1200px) rotateX(${cardDy*-4*factor}deg) rotateY(${cardDx*4*factor}deg) translateZ(${factor*4}px)`;
         el.style.transition='transform 0.12s ease';
-        el.style.boxShadow=factor>0.4?
-          `0 24px 70px rgba(0,0,0,0.55),0 0 ${35*factor}px rgba(212,175,55,${0.14*factor}),0 2px 0 rgba(255,255,255,0.1) inset`:'';
+        el.style.boxShadow=factor>0.55?
+          `0 14px 34px rgba(0,0,0,0.45),0 0 ${12*factor}px rgba(212,175,55,${0.08*factor}),0 2px 0 rgba(255,255,255,0.08) inset`:'';
       });
-      document.querySelectorAll('.shard').forEach((el,i)=>{
-        const speed=(i+1)*0.018;
-        el.style.transform=`translate(${dx*35*speed}px,${dy*25*speed}px) rotate(${dx*20*speed}deg)`;
-        el.style.transition='transform 0.05s linear';
-      });
-      document.querySelectorAll('.orb').forEach((el,i)=>{
-        const speed=(i+1)*0.01;
-        el.style.transform=`translate(${dx*40*speed}px,${dy*30*speed}px)`;
-        el.style.transition='transform 0.1s linear';
-      });
+      // Keep the glass effect local to the tiles only.
     });
   }
 });
@@ -1096,8 +1088,8 @@ window.addEventListener('scroll',()=>{
   const hero=document.querySelector('.hero-glass');
   if(hero&&scrollY<window.innerHeight){
     const progress=scrollY/window.innerHeight;
-    hero.style.transform=`scale(${1-progress*0.03}) translateY(${scrollY*0.1}px)`;
-    hero.style.opacity=Math.max(0.25,1-progress*0.7);
+    hero.style.transform=`scale(${1-progress*0.01}) translateY(${scrollY*0.03}px)`;
+    hero.style.opacity='1';
   }
   
   // Card scroll parallax
