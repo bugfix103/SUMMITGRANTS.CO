@@ -1121,6 +1121,93 @@ nav::after{
   .beyond-card{padding:24px 20px !important;min-height:auto !important}
 }
 
+
+/* ══ CONTACT MODAL ══ */
+.modal-overlay{
+  display:none;position:fixed;inset:0;z-index:9999;
+  background:rgba(0,5,20,0.85);
+  backdrop-filter:blur(8px);
+  align-items:center;justify-content:center;padding:20px;
+}
+.modal-overlay.open{display:flex}
+.modal-box{
+  background:linear-gradient(145deg,rgba(10,18,40,0.98) 0%,rgba(6,12,30,0.99) 100%);
+  border:1px solid rgba(212,175,55,0.25);
+  border-top:1px solid rgba(212,175,55,0.5);
+  border-radius:20px;
+  padding:44px 40px;
+  max-width:500px;width:100%;
+  position:relative;
+  box-shadow:0 30px 80px rgba(0,0,0,0.7),0 0 60px rgba(212,175,55,0.07);
+}
+.modal-close{
+  position:absolute;top:16px;right:20px;
+  background:none;border:none;cursor:pointer;
+  color:rgba(255,255,255,0.35);font-size:1.4rem;
+  line-height:1;transition:color 0.2s;padding:4px 8px;
+}
+.modal-close:hover{color:rgba(255,255,255,0.8)}
+.modal-title{
+  font-family:var(--serif);font-size:1.6rem;font-weight:600;
+  color:var(--white);margin-bottom:8px;
+}
+.modal-sub{
+  font-size:0.88rem;color:rgba(255,255,255,0.5);
+  margin-bottom:28px;line-height:1.6;
+}
+.modal-field{margin-bottom:16px}
+.modal-field label{
+  display:block;font-size:11.5px;font-weight:700;
+  letter-spacing:0.09em;text-transform:uppercase;
+  color:rgba(212,175,55,0.8);margin-bottom:7px;
+}
+.modal-field input,
+.modal-field textarea,
+.modal-field select{
+  width:100%;background:rgba(255,255,255,0.05);
+  border:1px solid rgba(212,175,55,0.2);
+  border-radius:10px;padding:13px 16px;
+  color:var(--white);font-family:var(--sans);font-size:0.92rem;
+  outline:none;transition:border-color 0.2s,background 0.2s;
+  box-sizing:border-box;
+}
+.modal-field input:focus,
+.modal-field textarea:focus,
+.modal-field select:focus{
+  border-color:rgba(212,175,55,0.55);
+  background:rgba(255,255,255,0.08);
+}
+.modal-field select option{background:#0a1228;color:var(--white)}
+.modal-field textarea{resize:vertical;min-height:90px}
+.modal-submit{
+  width:100%;margin-top:8px;
+  padding:15px;border:none;cursor:pointer;
+  border-radius:10px;font-size:0.95rem;font-weight:800;
+  letter-spacing:0.06em;text-transform:uppercase;
+  font-family:var(--sans);
+  background:linear-gradient(105deg,#7a5a00 0%,#c8920a 10%,#f5d060 25%,#fff4b0 33%,#e8b500 43%,#b87d00 55%,#f0c830 63%,#d4a017 78%,#8a6200 92%,#f5d060 100%);
+  background-size:300% 100%;
+  color:var(--navy-deep);
+  animation:liquid-metal-slide 3.5s ease-in-out infinite alternate;
+  box-shadow:0 4px 20px rgba(180,130,0,0.4),inset 0 1.5px 0 rgba(255,255,255,0.5);
+  transition:transform 0.2s,box-shadow 0.2s;
+}
+.modal-submit:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(180,130,0,0.55)}
+.modal-submit:active{transform:translateY(1px)}
+.modal-success{
+  display:none;text-align:center;padding:20px 0;
+}
+.modal-success .success-icon{font-size:3rem;margin-bottom:16px}
+.modal-success h3{
+  font-family:var(--serif);font-size:1.4rem;
+  color:var(--white);margin-bottom:10px;
+}
+.modal-success p{color:rgba(255,255,255,0.55);font-size:0.9rem;line-height:1.7}
+@media(max-width:600px){
+  .modal-box{padding:32px 22px}
+  .modal-title{font-size:1.35rem}
+}
+
 </style>
 </head>
 <body>
@@ -1198,7 +1285,7 @@ nav::after{
     </div>
 
     <div class="fit-check-link reveal from-bottom" style="transition-delay:0.38s;margin-top:28px;margin-bottom:22px">
-      Not sure if you qualify? <a href="mailto:contact@summitgrants.co?subject=Free%20Grant%20Fit%20Check" class="fit-check-a">Get a Free Grant Fit Check →</a>
+      Not sure if you qualify? <a href="#" class="fit-check-a" onclick="openModal();return false;">Get a Free Grant Fit Check →</a>
     </div>
     <div class="trust-row reveal from-bottom" style="transition-delay:0.54s">
       <div class="trust-item"><span class="t-check">✓</span> No equity taken</div>
@@ -1426,7 +1513,7 @@ nav::after{
       <span class="lock-icon">🔒</span> Secure checkout via Stripe &nbsp;·&nbsp; Instant confirmation &nbsp;·&nbsp; 48-hr delivery guaranteed
     </div>
     <div class="fit-check-link" style="margin-top:18px">
-      Not sure if you qualify? <a href="mailto:contact@summitgrants.co?subject=Free%20Grant%20Fit%20Check" class="fit-check-a">Get a Free Grant Fit Check →</a>
+      Not sure if you qualify? <a href="#" class="fit-check-a" onclick="openModal();return false;">Get a Free Grant Fit Check →</a>
     </div>
   </div>
 </section>
@@ -1438,7 +1525,7 @@ nav::after{
   </div>
   <div>
     <strong style="color:rgba(255,255,255,0.52)">SummitGrants</strong> &nbsp;·&nbsp;
-    <a href="mailto:contact@summitgrants.co?subject=Free%20Grant%20Fit%20Check" class="fit-check-a">Get a Free Grant Fit Check →</a> &nbsp;·&nbsp;
+    <a href="#" class="fit-check-a" onclick="openModal();return false;">Get a Free Grant Fit Check →</a> &nbsp;·&nbsp;
     <a href="privacy-policy.html">Privacy Policy</a> &nbsp;·&nbsp;
     <a href="terms-of-service.html">Terms of Service</a>
   </div>
@@ -1450,8 +1537,112 @@ nav::after{
 
 </div>
 
+<!-- ═══ CONTACT MODAL ═══ -->
+<div class="modal-overlay" id="contactModal" role="dialog" aria-modal="true" aria-label="Free Grant Fit Check">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal()" aria-label="Close">✕</button>
+    <div id="modalForm">
+      <div class="modal-title">Free Grant Fit Check</div>
+      <p class="modal-sub">Tell us about your business — we'll let you know which grants you qualify for and how we can help you win.</p>
+      <form id="fitCheckForm">
+        <div class="modal-field">
+          <label for="fc-name">Your Name</label>
+          <input type="text" id="fc-name" name="name" placeholder="Jane Smith" required>
+        </div>
+        <div class="modal-field">
+          <label for="fc-email">Email Address</label>
+          <input type="email" id="fc-email" name="email" placeholder="jane@yourbusiness.com" required>
+        </div>
+        <div class="modal-field">
+          <label for="fc-biz">Business Name</label>
+          <input type="text" id="fc-biz" name="business" placeholder="My Business LLC">
+        </div>
+        <div class="modal-field">
+          <label for="fc-type">Business Type</label>
+          <select id="fc-type" name="business_type">
+            <option value="">Select one...</option>
+            <option>Women-Owned</option>
+            <option>Black-Owned</option>
+            <option>Latino-Owned</option>
+            <option>Asian-Owned</option>
+            <option>Native-Owned</option>
+            <option>Immigrant-Founded</option>
+            <option>Veteran-Owned</option>
+            <option>General Small Business</option>
+          </select>
+        </div>
+        <div class="modal-field">
+          <label for="fc-msg">What does your business do? <span style="opacity:0.5;font-weight:400">(optional)</span></label>
+          <textarea id="fc-msg" name="message" placeholder="A short description helps us find the best grant match for you..."></textarea>
+        </div>
+        <button type="submit" class="modal-submit">Send My Fit Check Request →</button>
+      </form>
+    </div>
+    <div class="modal-success" id="modalSuccess">
+      <div class="success-icon">✦</div>
+      <h3>We've got your request!</h3>
+      <p>We'll review your details and get back to you within 24 hours with your grant fit results and next steps.</p>
+    </div>
+  </div>
+</div>
+
 <script>
 document.addEventListener('DOMContentLoaded', function(){
+
+// ── CONTACT MODAL ──
+window.openModal = function(){
+  var m = document.getElementById('contactModal');
+  m.classList.add('open');
+  document.body.style.overflow = 'hidden';
+  setTimeout(function(){ document.getElementById('fc-name').focus(); }, 100);
+};
+window.closeModal = function(){
+  document.getElementById('contactModal').classList.remove('open');
+  document.body.style.overflow = '';
+};
+document.getElementById('contactModal').addEventListener('click', function(e){
+  if(e.target === this) closeModal();
+});
+document.addEventListener('keydown', function(e){
+  if(e.key === 'Escape') closeModal();
+});
+document.getElementById('fitCheckForm').addEventListener('submit', function(e){
+  e.preventDefault();
+  var btn = this.querySelector('.modal-submit');
+  btn.textContent = 'Sending...';
+  btn.disabled = true;
+  var data = {
+    name: document.getElementById('fc-name').value,
+    email: document.getElementById('fc-email').value,
+    business: document.getElementById('fc-biz').value,
+    business_type: document.getElementById('fc-type').value,
+    message: document.getElementById('fc-msg').value,
+    _subject: 'Free Grant Fit Check — SummitGrants'
+  };
+  fetch('https://formspree.io/f/xdalvvya', {
+    method:'POST',
+    headers:{'Content-Type':'application/json','Accept':'application/json'},
+    body: JSON.stringify(data)
+  })
+  .then(function(r){
+    if(r.ok){
+      document.getElementById('modalForm').style.display='none';
+      document.getElementById('modalSuccess').style.display='block';
+    } else {
+      btn.textContent = 'Error — try again';
+      btn.disabled = false;
+    }
+  })
+  .catch(function(){
+    var ml = 'mailto:contact@summitgrants.co?subject=Free%20Grant%20Fit%20Check&body=Name:%20'
+      + encodeURIComponent(data.name) + '%0AEmail:%20' + encodeURIComponent(data.email)
+      + '%0ABusiness:%20' + encodeURIComponent(data.business)
+      + '%0AMessage:%20' + encodeURIComponent(data.message);
+    window.location.href = ml;
+    btn.textContent = 'Send My Fit Check Request \u2192';
+    btn.disabled = false;
+  });
+});
 
 // ── COUNTDOWN ──
 var deadline = new Date('2026-03-31T23:59:59');
@@ -1519,6 +1710,7 @@ document.addEventListener('mousemove',function(ev){
 });
 
 });
+
 </script>
 </body>
 </html>
