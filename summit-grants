@@ -188,16 +188,51 @@ nav{
 }
 .nav-links a:hover{color:var(--gold)}
 .nav-links a:hover::after{transform:scaleX(1)}
-.nav-btn{
-  background:linear-gradient(135deg,var(--gold) 0%,var(--gold-lt) 100%);
-  color:var(--navy-deep) !important;
-  padding:13px 30px;border-radius:9px;
-  font-size:12px !important;font-weight:800 !important;
-  letter-spacing:0.07em !important;text-transform:uppercase !important;
-  transition:all 0.25s ease !important;
-  box-shadow:0 4px 24px rgba(212,175,55,0.4);
+.nav-cta{
+  display:inline-flex;align-items:center;
+  position:relative;overflow:hidden;
+  padding:9px 18px;border-radius:8px;
+  font-size:11.5px;font-weight:900;
+  letter-spacing:0.07em;text-transform:uppercase;
+  white-space:nowrap;text-decoration:none;
+  color:var(--navy-deep);
+  flex-shrink:0;
+  isolation:isolate;
+  background:linear-gradient(105deg,
+    #7a5a00 0%,#c8920a 10%,#f5d060 22%,
+    #fff4b0 30%,#e8b500 40%,#b87d00 52%,
+    #f0c830 60%,#fff0a0 68%,#d4a017 78%,
+    #8a6200 90%,#f5d060 100%);
+  background-size:300% 100%;
+  animation:liquid-metal-slide 3.5s ease-in-out infinite alternate;
+  box-shadow:0 0 0 1.5px rgba(212,175,55,0.5),0 4px 16px rgba(180,130,0,0.4),inset 0 1px 0 rgba(255,255,255,0.5),inset 0 -1px 0 rgba(0,0,0,0.2);
+  transition:transform 0.22s ease,box-shadow 0.22s ease;
 }
-.nav-btn:hover{
+.nav-cta::before{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(255,255,255,0.3) 0%,rgba(255,255,255,0.05) 50%,transparent 100%);
+  border-radius:inherit;pointer-events:none;z-index:1;
+}
+.nav-cta::after{
+  content:'';position:absolute;top:0;left:-80%;
+  width:55%;height:100%;
+  background:linear-gradient(105deg,transparent 20%,rgba(255,255,230,0.5) 50%,transparent 80%);
+  transform:skewX(-20deg);
+  animation:metal-sweep 3.5s ease-in-out infinite;
+  pointer-events:none;z-index:2;
+}
+.nav-cta:hover{
+  transform:translateY(-3px);
+  box-shadow:0 0 0 2px rgba(245,208,96,0.8),0 8px 24px rgba(180,130,0,0.55),0 12px 0 -4px rgba(0,0,0,0.3),inset 0 2px 0 rgba(255,255,255,0.6),inset 0 -2px 0 rgba(0,0,0,0.35);
+  filter:brightness(1.07);
+}
+.nav-cta:active{
+  transform:translateY(1px);
+  box-shadow:0 0 0 1.5px rgba(245,208,96,0.5),0 1px 6px rgba(0,0,0,0.3),inset 0 2px 5px rgba(0,0,0,0.2),inset 0 1px 0 rgba(255,255,255,0.25);
+  filter:brightness(0.95);
+  transition:transform 0.08s ease,box-shadow 0.08s ease;
+}
+.nav-cta:hover{
   transform:translateY(-2px) scale(1.04) !important;
   box-shadow:0 8px 38px rgba(212,175,55,0.65) !important;
   filter:brightness(1.08);
@@ -259,20 +294,92 @@ nav{
 /* ══ GOLD BUTTON ══ */
 .btn-gold{
   display:inline-flex;align-items:center;gap:10px;
-  background:linear-gradient(135deg,var(--gold) 0%,#F7D050 40%,var(--gold) 100%);
-  background-size:200% auto;
-  color:var(--navy-deep);
-  font-family:var(--sans);font-size:1.06rem;font-weight:800;
-  letter-spacing:0.04em;
+  position:relative;
   padding:22px 52px;border-radius:11px;
   text-decoration:none;border:none;cursor:pointer;
-  transition:all 0.35s ease;
+  font-family:var(--sans);font-size:1.06rem;font-weight:900;
+  letter-spacing:0.05em;
+  color:var(--navy-deep);
+  overflow:hidden;
+  isolation:isolate;
+  transition:transform 0.22s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.22s ease, filter 0.22s ease;
+  /* Liquid metal base — deep amber metal */
+  background:
+    linear-gradient(105deg,
+      #7a5a00 0%,
+      #c8920a 8%,
+      #f5d060 20%,
+      #fff4b0 28%,
+      #e8b500 38%,
+      #b87d00 50%,
+      #f0c830 58%,
+      #fff0a0 66%,
+      #d4a017 76%,
+      #8a6200 88%,
+      #f5d060 100%
+    );
+  background-size:300% 100%;
+  animation:liquid-metal-slide 3.5s ease-in-out infinite alternate;
   box-shadow:
-    0 6px 36px rgba(212,175,55,0.52),
-    0 2px 10px rgba(0,0,0,0.35),
-    inset 0 1px 0 rgba(255,255,255,0.3);
-  animation:pulse-btn 3s ease-in-out infinite;
-  position:relative;overflow:hidden;
+    0 0 0 2px rgba(212,175,55,0.6),
+    0 6px 30px rgba(180,130,0,0.55),
+    0 2px 8px rgba(0,0,0,0.4),
+    inset 0 1.5px 0 rgba(255,255,255,0.55),
+    inset 0 -2px 0 rgba(0,0,0,0.25);
+}
+/* Inner highlight sheen */
+.btn-gold::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:linear-gradient(
+    180deg,
+    rgba(255,255,255,0.35) 0%,
+    rgba(255,255,255,0.08) 45%,
+    transparent 100%
+  );
+  border-radius:inherit;
+  pointer-events:none;
+  z-index:1;
+}
+/* Animated sweep shimmer */
+.btn-gold::after{
+  content:'';
+  position:absolute;
+  top:0;left:-80%;
+  width:50%;height:100%;
+  background:linear-gradient(
+    105deg,
+    transparent 15%,
+    rgba(255,255,220,0.7) 45%,
+    rgba(255,255,255,0.85) 50%,
+    rgba(255,255,220,0.7) 55%,
+    transparent 85%
+  );
+  transform:skewX(-18deg);
+  animation:metal-sweep 4s ease-in-out infinite;
+  pointer-events:none;
+  z-index:2;
+}
+/* Text sits above pseudo-elements */
+.btn-gold span, .btn-gold{
+  z-index:3;
+}
+@keyframes liquid-metal-slide{
+  0%{background-position:0% 50%}
+  100%{background-position:100% 50%}
+}
+@keyframes metal-sweep{
+  0%{left:-80%;opacity:0}
+@keyframes metal-sweep-fast{
+  0%{left:-80%;opacity:0}
+  5%{opacity:1}
+  70%{left:130%;opacity:1}
+  71%,100%{opacity:0;left:130%}
+}
+  10%{opacity:1}
+  60%{left:130%;opacity:1}
+  61%,100%{opacity:0;left:130%}
 }
 .btn-gold::before{
   content:'';position:absolute;top:0;left:-100%;width:50%;height:100%;
@@ -281,14 +388,29 @@ nav{
 }
 .btn-gold:hover::before{animation:shine-btn 0.7s ease forwards}
 @keyframes shine-btn{from{left:-100%}to{left:160%}}
-@keyframes pulse-btn{
-  0%,100%{box-shadow:0 6px 36px rgba(212,175,55,0.52),0 2px 10px rgba(0,0,0,0.35),inset 0 1px 0 rgba(255,255,255,0.3)}
+
   50%{box-shadow:0 10px 60px rgba(212,175,55,0.8),0 4px 20px rgba(0,0,0,0.4),inset 0 1px 0 rgba(255,255,255,0.3)}
 }
 .btn-gold:hover{
-  transform:translateY(-5px) scale(1.05);
-  background-position:right center;
-  box-shadow:0 16px 75px rgba(212,175,55,0.78),0 4px 22px rgba(0,0,0,0.5),inset 0 1px 0 rgba(255,255,255,0.3);
+  transform:translateY(-4px);
+  box-shadow:
+    0 0 0 2px rgba(255,220,60,0.8),
+    0 10px 40px rgba(180,130,0,0.6),
+    0 18px 0 -4px rgba(0,0,0,0.35),
+    inset 0 2px 0 rgba(255,255,255,0.65),
+    inset 0 -3px 0 rgba(0,0,0,0.4);
+  filter:brightness(1.08);
+}
+.btn-gold:active{
+  transform:translateY(2px);
+  box-shadow:
+    0 0 0 2px rgba(255,220,60,0.6),
+    0 2px 8px rgba(180,130,0,0.4),
+    0 3px 0 -1px rgba(0,0,0,0.3),
+    inset 0 3px 6px rgba(0,0,0,0.25),
+    inset 0 1px 0 rgba(255,255,255,0.3);
+  filter:brightness(0.95);
+  transition:transform 0.08s ease, box-shadow 0.08s ease;
 }
 
 .hero-timer{
@@ -385,18 +507,23 @@ section{position:relative;padding:100px 56px}
 }
 .amber-box p strong{color:var(--gold-lt)}
 .elig-grid{
-  display:grid;grid-template-columns:repeat(auto-fit,minmax(178px,1fr));
-  gap:14px;margin-top:36px;
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:10px;
+  margin-top:32px;
 }
 .elig-chip{
   background:rgba(212,175,55,0.07);
   border:1px solid rgba(212,175,55,0.17);
   border-top:1px solid rgba(212,175,55,0.3);
-  border-radius:14px;padding:18px 20px;
-  display:flex;align-items:center;gap:12px;
-  font-size:13px;color:rgba(255,255,255,0.7);font-weight:400;
-  transition:all 0.28s;backdrop-filter:blur(8px);
-  box-shadow:0 4px 16px rgba(0,0,0,0.25),inset 0 1px 0 rgba(255,255,255,0.06);
+  border-radius:50px;
+  padding:10px 18px;
+  display:inline-flex;align-items:center;gap:9px;
+  font-size:12.5px;color:rgba(255,255,255,0.72);font-weight:400;
+  transition:all 0.25s;backdrop-filter:blur(8px);
+  white-space:nowrap;
+  box-shadow:0 3px 12px rgba(0,0,0,0.22),inset 0 1px 0 rgba(255,255,255,0.06);
 }
 .elig-chip:hover{
   background:rgba(212,175,55,0.13);border-color:rgba(212,175,55,0.35);
@@ -758,168 +885,141 @@ nav::after{
 @media(max-width:960px){
   nav{padding:8px 24px}
   section{padding:70px 28px}
-  .hero{padding:60px 24px 50px}
-  .hero-glass{padding:48px 36px}
-  .steps{grid-template-columns:1fr;gap:20px}
-  .pricing-inner{padding:52px 32px}
-  .amber-box{padding:40px 32px}
-  .final-box{padding:52px 32px}
+  .hero{padding:50px 24px}
+  .hero-glass{padding:44px 32px}
+  .steps{grid-template-columns:1fr;gap:18px}
+  .pricing-inner{padding:48px 30px}
+  .pricing-wrap{max-width:560px}
+  .amber-box{padding:36px 28px}
+  .final-box{padding:48px 28px}
   .testi-grid{grid-template-columns:1fr}
   .faq-grid{grid-template-columns:1fr}
   .niches{grid-template-columns:repeat(2,1fr)}
   .elig-grid{grid-template-columns:repeat(2,1fr)}
-  .pricing-wrap{max-width:100%}
-  .trust-row{gap:16px}
-  footer{padding:36px 28px;gap:14px}
-}
+  
+  .trust-row{gap:12px;flex-wrap:wrap}
+  footer{padding:32px 28px;gap:12px}
 
-/* ═══════════════════════════════════════════
-   RESPONSIVE — MOBILE (max 600px)
-═══════════════════════════════════════════ */
+  }
+
 @media(max-width:600px){
-  /* NAV */
-  nav{padding:8px 16px}
+  /* ── NAV ── */
+  nav{padding:8px 14px}
   .nav-links{display:none}
-  .nav-mobile-cta{display:inline-flex;align-items:center}
-  .nav-logo img{height:44px}
+  .nav-logo img{height:40px}
+  
+  .nav-cta{font-size:10px;padding:8px 13px;letter-spacing:0.05em}
 
-  /* ANNOUNCE */
-  .announce{font-size:10.5px;padding:10px 12px;letter-spacing:0.06em}
+  /* ── ANNOUNCE ── */
+  .announce{font-size:10px;padding:8px 12px;letter-spacing:0.04em;white-space:normal;text-align:center}
 
-  /* HERO */
-  .hero{padding:40px 16px 40px;min-height:auto;height:auto}
-  .hero-glass{
-    padding:36px 20px;
-    border-radius:18px;
-  }
-  .hero h1{font-size:clamp(1.75rem,7.5vw,2.4rem);margin-bottom:18px}
+  /* ── HERO ── */
+  .hero{padding:32px 14px 36px;min-height:auto;height:auto}
+  .hero-glass{padding:28px 16px;border-radius:16px}
+  .hero h1{font-size:clamp(1.6rem,7vw,2.2rem);margin-bottom:14px}
   .hero h1 em{display:inline}
-  .eyebrow-pill{font-size:10px;padding:7px 14px;margin-bottom:20px}
-  .hero-sub{font-size:0.92rem;margin-bottom:28px;max-width:100%}
+  .eyebrow-pill{font-size:9.5px;padding:6px 12px;margin-bottom:16px}
+  .hero-sub{font-size:0.88rem;margin-bottom:22px;max-width:100%}
+  .btn-gold{font-size:0.88rem;padding:14px 20px;width:100%;justify-content:center}
 
-  /* HERO CTA BUTTON */
-  .btn-gold{
-    font-size:0.9rem;
-    padding:16px 24px;
-    width:100%;
-    justify-content:center;
-    border-radius:10px;
-    text-align:center;
-  }
+  /* ── TIMER ── */
+  .hero-timer{flex-wrap:wrap;justify-content:center;gap:6px;margin-top:20px;margin-bottom:0}
+  .timer-block{padding:9px 10px;min-width:54px}
+  .timer-num{font-size:1.3rem}
+  .timer-label{font-size:9px}
+  .timer-colon{font-size:1.2rem;line-height:2.5}
+  .scarcity-pill{margin-left:0;margin-top:8px;font-size:10.5px;padding:7px 12px}
 
-  /* HERO TIMER */
-  .hero-timer{
-    flex-wrap:wrap;
-    justify-content:center;
-    gap:6px;
-    margin-top:24px;
-  }
-  .timer-block{padding:10px 12px;min-width:58px}
-  .timer-num{font-size:1.4rem}
-  .scarcity-pill{
-    margin-left:0;
-    margin-top:8px;
-    font-size:11px;
-    padding:8px 14px;
-    width:100%;
-    justify-content:center;
-  }
+  /* ── FIT CHECK LINK ── */
+  .fit-check-link{margin-top:20px!important;margin-bottom:16px!important;padding:0 8px}
 
-  /* TRUST ROW */
-  .trust-row{
-    gap:10px;
-    flex-direction:column;
-    align-items:flex-start;
-    padding-left:8px;
-  }
+  /* ── TRUST ROW ── */
+  .trust-row{flex-direction:column;align-items:flex-start;gap:8px;padding-left:4px}
+  .trust-item{font-size:0.82rem}
 
-  /* SECTIONS */
-  section{padding:52px 16px}
-  .sec-title{font-size:clamp(1.6rem,6.5vw,2.2rem)}
-  .sec-sub{font-size:0.9rem}
-  .gold-rule{margin:24px auto}
+  /* ── SECTIONS ── */
+  section{padding:44px 14px}
+  .sec-title{font-size:clamp(1.5rem,6.5vw,2rem)}
+  .sec-sub{font-size:0.88rem}
+  .gold-rule{margin:18px auto}
 
-  /* AMBER BOX */
-  .amber-box{padding:28px 20px;border-radius:16px}
-  .amber-box h2{font-size:clamp(1.4rem,6vw,1.9rem)}
-  .amber-box p{font-size:0.88rem}
-  .elig-grid{grid-template-columns:1fr 1fr;gap:10px}
-  .elig-chip{padding:12px 14px;font-size:12px;gap:8px}
+  /* ── AMBER BOX ── */
+  .amber-box{padding:24px 16px;border-radius:14px}
+  .amber-box h2{font-size:clamp(1.25rem,5.5vw,1.7rem)}
+  .amber-box p{font-size:0.86rem}
+  .elig-grid{grid-template-columns:1fr 1fr;gap:8px}
+  .elig-chip{padding:8px 14px;font-size:11px}
 
-  /* HOW IT WORKS */
-  .steps{grid-template-columns:1fr;gap:16px}
-  .step-card{padding:32px 24px}
-  .step-n{font-size:3rem}
-  .step-em{font-size:1.8rem;margin-bottom:14px}
-  .step-card h3{font-size:1.15rem}
-  .step-card p{font-size:0.88rem}
+  /* ── STEPS ── */
+  .steps{grid-template-columns:1fr;gap:14px}
+  .step-card{padding:26px 18px}
+  .step-n{font-size:2.8rem}
+  .step-card h3{font-size:1.1rem}
+  .step-card p{font-size:0.86rem}
 
-  /* PRICING */
-  .pricing-wrap{max-width:480px}
-  .pricing-border{border-radius:16px}
-  .pricing-inner{padding:36px 20px;border-radius:14px}
-  .price-big{font-size:4.5rem}
-  .price-dollar{font-size:1.6rem;margin-top:10px}
-  .price-note{font-size:0.82rem;margin-bottom:28px}
-  .features li{font-size:0.88rem;gap:10px}
-  .feat-icon{width:19px;height:19px;font-size:9px;flex-shrink:0}
-  .risk-box{padding:16px 18px;font-size:0.88rem;margin-bottom:28px}
-
-  /* NICHES */
-  .niches{grid-template-columns:1fr 1fr;gap:12px}
-  .niche-card{padding:22px 16px}
-  .niche-icon{font-size:2rem;margin-bottom:10px}
-  .niche-card h4{font-size:0.95rem}
-  .niche-card p{font-size:0.8rem}
-
-  /* TESTIMONIALS */
-  .testi-grid{grid-template-columns:1fr;gap:16px}
-  .testi-card{padding:28px 20px}
-  .testi-q{font-size:0.92rem}
-  .testi-q::before{font-size:2rem}
-  .avatar{width:42px;height:42px;font-size:1rem}
-  .author-name{font-size:0.88rem}
-  .author-role{font-size:0.75rem}
-
-  /* FAQ */
-  .faq-grid{grid-template-columns:1fr;gap:14px}
-  .faq-item{padding:22px 18px}
-  .faq-q{font-size:0.95rem}
-  .faq-a{font-size:0.85rem}
-
-  /* FINAL CTA */
-  .final-section{padding:52px 16px}
-  .final-box{padding:36px 20px;border-radius:18px}
-  .final-box h2{font-size:clamp(1.5rem,7vw,2.2rem)}
-  .final-box p{font-size:0.9rem;margin-bottom:30px}
-  .final-timer{gap:5px;margin-bottom:30px}
-  .final-timer .timer-block{min-width:52px;padding:9px 10px}
-  .final-timer .timer-num{font-size:1.25rem}
+  /* ── PRICING ── */
+  .pricing-wrap{max-width:100%}
+  .pricing-border{border-radius:14px}
+  .pricing-inner{padding:30px 16px;border-radius:12px}
+  .price-big{font-size:4rem}
   .pricing-border::before{animation:none}
-  .micro-lock{font-size:10px;flex-wrap:wrap;justify-content:center;gap:4px}
+  .features{gap:12px}
+  .features li{font-size:0.86rem}
+  .feat-icon{width:18px;height:18px;font-size:8.5px;flex-shrink:0}
+  .risk-box{padding:14px 16px;font-size:0.85rem}
 
-  /* FOOTER */
-  footer{
-    flex-direction:column;
-    text-align:center;
-    align-items:center;
-    padding:32px 16px;
-    gap:12px;
-  }
-  .footer-logo img{height:44px}
-  .footer-disclaimer{font-size:10px;line-height:1.6}
+  /* ── NICHES ── */
+  .niches{grid-template-columns:1fr 1fr;gap:10px}
+  .niche-card{padding:18px 14px}
+  .niche-icon{font-size:1.8rem;margin-bottom:8px}
+  .niche-card h4{font-size:0.9rem}
+  .niche-card p{font-size:0.78rem}
 
-  /* HIDE AMBIENT SHARDS on tiny screens for perf */
+  /* ── TESTIMONIALS ── */
+  .testi-grid{grid-template-columns:1fr;gap:14px}
+  .testi-card{padding:24px 16px}
+  .testi-q{font-size:0.9rem}
+
+  /* ── BEYOND SECTION ── */
+  
+  
+  /* ══ BEYOND BENTO GRID ══ */
+
+  .beyond-note p{font-size:0.86rem}
+
+  /* ── FAQ ── */
+  .faq-grid{grid-template-columns:1fr;gap:12px}
+  .faq-item{padding:20px 16px}
+  .faq-q{font-size:0.92rem}
+  .faq-a{font-size:0.83rem}
+
+  /* ── FINAL CTA ── */
+  .final-box{padding:28px 16px;border-radius:16px}
+  .final-box h2{font-size:clamp(1.4rem,6.5vw,2rem)}
+  .final-box p{font-size:0.88rem;margin-bottom:22px}
+  .final-timer{gap:4px;margin-bottom:22px}
+  .final-timer .timer-block{min-width:48px;padding:8px 9px}
+  .final-timer .timer-num{font-size:1.15rem}
+  .micro-lock{font-size:9.5px;flex-wrap:wrap;justify-content:center;gap:4px}
+
+  /* ── FOOTER ── */
+  footer{flex-direction:column;text-align:center;align-items:center;padding:28px 14px;gap:10px}
+  .footer-logo img{height:38px}
+  .footer-disclaimer{font-size:9.5px;line-height:1.6}
   .shard3,.shard4{display:none}
-  .shard1{width:120px;height:120px}
-  .shard2{width:70px;height:70px}
+  .shard1{width:100px;height:100px}
+  .shard2{width:60px;height:60px}
 }
 
-/* ═══════════════════════════════════════════
-   EXTRA SMALL (max 380px)
-═══════════════════════════════════════════ */
 @media(max-width:380px){
-  .hero-glass{padding:28px 16px}
+  .hero-glass{padding:22px 12px}
+  .hero h1{font-size:1.5rem}
+  .elig-grid{grid-template-columns:1fr}
+  .niches{grid-template-columns:1fr}
+  .timer-colon{display:none}
+  .timer-block{min-width:48px;padding:8px}
+  nav{padding:6px 10px}
+}
   .hero h1{font-size:1.65rem}
   .elig-grid{grid-template-columns:1fr}
   .niches{grid-template-columns:1fr}
@@ -928,16 +1028,97 @@ nav::after{
 }
 
 
-/* Mobile-only nav CTA (shown when links are hidden) */
-.nav-mobile-cta{
-  display:none;
-  background:linear-gradient(135deg,var(--gold) 0%,var(--gold-lt) 100%);
-  color:var(--navy-deep);
-  font-size:11px;font-weight:800;letter-spacing:0.07em;
-  text-transform:uppercase;text-decoration:none;
-  padding:9px 16px;border-radius:7px;
-  box-shadow:0 3px 14px rgba(212,175,55,0.35);
-  white-space:nowrap;
+
+
+
+/* ══ BEYOND AMBER GRANT SECTION ══ */
+
+
+.beyond-tag{
+  display:inline-block;
+  background:rgba(212,175,55,0.12);border:1px solid rgba(212,175,55,0.25);
+  border-radius:50px;padding:4px 12px;
+  font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;
+  color:var(--gold);margin-bottom:14px;
+}
+.beyond-card h4{
+  font-family:var(--serif);font-size:1.15rem;font-weight:600;
+  color:var(--white);margin-bottom:10px;
+}
+.beyond-card p{font-size:0.88rem;color:rgba(255,255,255,0.6);line-height:1.7;font-weight:300}
+.beyond-deadline{
+  margin-top:16px;font-size:11px;font-weight:600;
+  color:rgba(212,175,55,0.7);letter-spacing:0.04em;
+}
+.beyond-note p{
+  color:rgba(255,255,255,0.68);font-size:0.97rem;
+  line-height:1.8;font-weight:300;
+}
+
+@media(max-width:600px){
+  
+    
+}
+
+
+/* ══ FREE GRANT FIT CHECK LINK ══ */
+.fit-check-link{
+  font-size:0.88rem;color:rgba(255,255,255,0.5);
+  text-align:center;
+}
+.fit-check-a{
+  color:var(--gold-lt);text-decoration:none;
+  font-weight:600;border-bottom:1px solid rgba(245,208,96,0.3);
+  transition:color 0.2s,border-color 0.2s;
+}
+.fit-check-a:hover{color:var(--white);border-color:var(--white)}
+
+
+/* ══════════════════════════════════════
+   BEYOND AMBER GRANT — BENTO GRID
+══════════════════════════════════════ */
+.beyond-grid{
+  display:grid !important;
+  grid-template-columns:repeat(2,1fr) !important;
+  gap:20px !important;
+  max-width:860px !important;
+  width:100% !important;
+  margin:44px auto 0 !important;
+}
+.beyond-card{
+  /* Override glass-card to ensure text is inside */
+  display:flex !important;
+  flex-direction:column !important;
+  padding:32px 28px !important;
+  box-sizing:border-box !important;
+  min-height:160px !important;
+  transition:transform 0.32s ease, box-shadow 0.32s ease !important;
+  position:relative !important;
+}
+.beyond-card:hover{
+  transform:translateY(-6px) !important;
+  box-shadow:0 20px 56px rgba(0,0,0,0.5),0 0 28px rgba(212,175,55,0.12) !important;
+}
+.beyond-note{
+  max-width:680px !important;
+  width:100% !important;
+  margin:52px auto 0 !important;
+  text-align:center !important;
+  background:rgba(212,175,55,0.07) !important;
+  border:1px solid rgba(212,175,55,0.2) !important;
+  border-radius:16px !important;
+  padding:32px 36px !important;
+  position:relative !important;
+  z-index:1 !important;
+}
+.beyond-note p{
+  color:rgba(255,255,255,0.68);font-size:0.95rem;line-height:1.8;font-weight:300;
+}
+/* Responsive */
+@media(max-width:600px){
+  .beyond-grid{grid-template-columns:1fr !important;max-width:100% !important}
+  .beyond-note{padding:24px 18px !important}
+  .beyond-card{padding:24px 20px !important;min-height:auto !important}
 }
 
 </style>
@@ -965,7 +1146,7 @@ nav::after{
 <!-- ANNOUNCE -->
 <div class="announce">
   <span class="pdot"></span>
-  March 31 Deadline — Amber Grant Food &amp; Beverage Category Now Open &nbsp;·&nbsp; Only 14 drafting slots left this week
+  ⏳ Amber Grant Deadline: March 31 &nbsp;·&nbsp; Open to Women-Owned Small Businesses &nbsp;·&nbsp; Only 14 drafting slots remaining this week
 </div>
 
 <!-- NAV -->
@@ -976,11 +1157,10 @@ nav::after{
   <div class="nav-links">
     <a href="#how">How It Works</a>
     <a href="#pricing">Pricing</a>
-    <a href="#proof">Results</a>
+    <a href="#proof">Stories</a>
     <a href="#faq">FAQ</a>
-    <a href="https://pay.airwallex.com/sghg7x7oc7k2" target="_blank" rel="noopener" class="nav-btn">Get $99 Draft →</a>
   </div>
-  <a href="https://pay.airwallex.com/sghg7x7oc7k2" target="_blank" rel="noopener" class="nav-mobile-cta">Get Draft $99</a>
+  <a href="https://pay.airwallex.com/sghg7x7oc7k2" target="_blank" rel="noopener" class="nav-cta">Get $99 Draft →</a>
 </nav>
 
 <!-- ═══ HERO ═══ -->
@@ -989,23 +1169,21 @@ nav::after{
   <div class="hero-content hero-glass">
     <div class="eyebrow-pill reveal from-bottom">
       <span class="pdot"></span>
-      Amber Grant &amp; Hello Alice — March Applications Open
+      Amber Grant — March 31 Deadline &nbsp;·&nbsp; Open to All Founders
     </div>
 
     <h1 class="reveal from-bottom" style="transition-delay:0.1s">
-      Imagine $10,000
-      <em>Hitting Your Account —</em>
-      Without the Paperwork Nightmare
+      Your Story Deserves
+      <em>$10,000 — Let's Write</em>
+      the Application That Wins It
     </h1>
 
     <p class="hero-sub reveal from-bottom" style="transition-delay:0.2s">
-      We craft <strong>winning grant applications</strong> for the Amber Grant, Hello Alice &amp; more.
-      Just <strong>$99 flat fee</strong>. You submit. You keep every dollar.
-      <strong>No win = no extra cost.</strong>
+      We turn your story into a <strong>judge-winning grant application.</strong><br><span style="font-size:0.88rem;opacity:0.75">$99 flat fee &nbsp;·&nbsp; 48-hr delivery &nbsp;·&nbsp; No win = no extra cost</span>
     </p>
 
     <div class="reveal from-bottom" style="transition-delay:0.3s">
-      <a href="https://pay.airwallex.com/sghg7x7oc7k2" target="_blank" rel="noopener" class="btn-gold">✦ Claim My $99 Draft Before March 31 →</a>
+      <a href="https://pay.airwallex.com/sghg7x7oc7k2" target="_blank" rel="noopener" class="btn-gold">✦ Claim My $99 Draft — March 31 Deadline →</a>
     </div>
 
     <div class="hero-timer reveal from-bottom" style="transition-delay:0.42s">
@@ -1019,6 +1197,9 @@ nav::after{
       <div class="scarcity-pill" style="margin-left:10px"><span class="scarcity-dot"></span>Only 14 spots left</div>
     </div>
 
+    <div class="fit-check-link reveal from-bottom" style="transition-delay:0.38s;margin-top:28px;margin-bottom:22px">
+      Not sure if you qualify? <a href="mailto:contact@summitgrants.co?subject=Free%20Grant%20Fit%20Check" class="fit-check-a">Get a Free Grant Fit Check →</a>
+    </div>
     <div class="trust-row reveal from-bottom" style="transition-delay:0.54s">
       <div class="trust-item"><span class="t-check">✓</span> No equity taken</div>
       <div class="trust-item"><span class="t-check">✓</span> No subscriptions</div>
@@ -1031,17 +1212,17 @@ nav::after{
 <!-- ═══ AMBER GRANT ═══ -->
 <section>
   <div class="amber-box glass-card reveal scale-in">
-    <span class="sec-label">What Is the Amber Grant?</span>
-    <h2>$10,000 Awarded Every Month to a Woman-Owned Business</h2>
-    <p>The Amber Grant Foundation awards <strong>$10,000 every single month</strong> to women entrepreneurs across the US and Canada — plus annual grants reaching $25,000. No complex criteria. Just your story and your vision.</p>
-    <p>We write the application for you — professionally, compellingly, and with the narrative polish that actually moves grant committees. You review, submit, and wait for the good news.</p>
+    <span class="sec-label">Your First Target Grant</span>
+    <h2>The Amber Grant: $10,000 Every Month to a Small Business Founder</h2>
+    <p>The Amber Grant awards <strong>$10,000 monthly</strong> (up to $25k annually) to US entrepreneurs — <strong>no financials, no portal, no gatekeeping.</strong> Just your story.</p>
+    <p>We write it for you. You review, submit, keep every dollar. <strong style="color:var(--gold-lt)">March 31 deadline — apply now.</strong></p>
     <div class="elig-grid">
-      <div class="elig-chip reveal from-bottom" style="transition-delay:0.05s"><span>👩‍💼</span> Women-owned business</div>
-      <div class="elig-chip reveal from-bottom" style="transition-delay:0.1s"><span>🇺🇸</span> US or Canada based</div>
-      <div class="elig-chip reveal from-bottom" style="transition-delay:0.15s"><span>🎂</span> 18 years or older</div>
-      <div class="elig-chip reveal from-bottom" style="transition-delay:0.2s"><span>💡</span> Any stage or industry</div>
-      <div class="elig-chip reveal from-bottom" style="transition-delay:0.25s"><span>📅</span> Monthly deadlines</div>
-      <div class="elig-chip reveal from-bottom" style="transition-delay:0.3s"><span>💰</span> $10k – $25k awards</div>
+      <div class="elig-chip reveal from-bottom" style="transition-delay:0.05s"><span>👩‍💼</span> Women-owned businesses</div>
+      <div class="elig-chip reveal from-bottom" style="transition-delay:0.1s"><span>🌎</span> US-based businesses</div>
+      <div class="elig-chip reveal from-bottom" style="transition-delay:0.15s"><span>🎂</span> Founders 18 or older</div>
+      <div class="elig-chip reveal from-bottom" style="transition-delay:0.2s"><span>💡</span> Any stage, any industry</div>
+      <div class="elig-chip reveal from-bottom" style="transition-delay:0.25s"><span>📅</span> New deadline every month</div>
+      <div class="elig-chip reveal from-bottom" style="transition-delay:0.3s"><span>💰</span> $10k – $25k in awards</div>
     </div>
   </div>
 </section>
@@ -1049,57 +1230,57 @@ nav::after{
 <!-- ═══ HOW IT WORKS ═══ -->
 <section id="how">
   <span class="sec-label reveal from-bottom">The Process</span>
-  <h2 class="sec-title reveal from-bottom" style="transition-delay:0.1s">3 Steps to Your Winning Application</h2>
-  <p class="sec-sub reveal from-bottom" style="transition-delay:0.2s">We handle the hard part. You hit submit and keep every dollar you win.</p>
+  <h2 class="sec-title reveal from-bottom" style="transition-delay:0.1s">How We Turn Your Story Into a Winning Grant</h2>
+  <p class="sec-sub reveal from-bottom" style="transition-delay:0.2s">You built something real. We give it the words it deserves — and get it in front of the people who can fund it.</p>
   <div class="gold-rule"></div>
   <div class="steps">
     <div class="step-card glass-card reveal from-left lift-on-scroll parallax-card" data-tilt>
       <div class="step-n">01</div>
       <span class="step-em">✍️</span>
       <h3>Tell Us Your Vision</h3>
-      <p>Fill out our simple 10-minute intake form. No jargon. No financials. Just the <strong>heart and soul</strong> of your business and your dream.</p>
+      <p>A simple 10-minute form. <strong>No jargon, no financials</strong> — just your passion and purpose.</p>
     </div>
     <div class="step-card glass-card reveal from-bottom lift-on-scroll parallax-card" style="transition-delay:0.15s" data-tilt>
       <div class="step-n">02</div>
       <span class="step-em">✨</span>
       <h3>We Craft the Narrative</h3>
-      <p>Within <strong>48 hours</strong>, our experts transform your story into a compelling, high-converting application designed to move grant committees.</p>
+      <p>Within <strong>48 hours</strong> we craft a compelling narrative that makes judges stop and remember your name.</p>
     </div>
     <div class="step-card glass-card reveal from-right lift-on-scroll parallax-card" data-tilt>
       <div class="step-n">03</div>
       <span class="step-em">🏆</span>
       <h3>Submit &amp; Keep 100%</h3>
-      <p>We deliver your finished draft + a step-by-step guide. <strong>You hit submit.</strong> If you win, every single dollar is yours — always.</p>
+      <p>Your polished draft lands in your inbox. <strong>You hit submit.</strong> Every dollar you win is 100% yours — always.</p>
     </div>
   </div>
 </section>
 
 <!-- ═══ PRICING ═══ -->
 <section id="pricing">
-  <span class="sec-label reveal from-bottom">Investment</span>
-  <h2 class="sec-title reveal from-bottom" style="transition-delay:0.1s">One Price. Zero Risk. Massive Upside.</h2>
+  <span class="sec-label reveal from-bottom">Simple, Honest Pricing</span>
+  <h2 class="sec-title reveal from-bottom" style="transition-delay:0.1s">One Flat Fee. Zero Risk. Life-Changing Upside.</h2>
   <div class="gold-rule"></div>
   <div class="pricing-wrap reveal scale-in" style="transition-delay:0.15s">
     <div class="pricing-border">
       <div class="pricing-inner">
-        <span class="sec-label" style="margin-bottom:26px">The Submit-Ready Draft Package</span>
+        <span class="sec-label" style="margin-bottom:26px">The Grant-Ready Draft Package</span>
         <div class="price-tag">
           <span class="price-dollar">$</span>
           <span class="price-big">99</span>
         </div>
-        <p class="price-note">One-time flat fee — no subscriptions, no recurring charges, ever</p>
+        <p class="price-note">One-time flat fee — no subscriptions, no hidden fees, ever</p>
         <ul class="features">
-          <li><span class="feat-icon">✓</span> Fully written, submission-ready grant draft</li>
-          <li><span class="feat-icon">✓</span> Targeted to the $10k Amber Grant or Hello Alice</li>
-          <li><span class="feat-icon">✓</span> Heartfelt storytelling in your own brand voice</li>
-          <li><span class="feat-icon">✓</span> Step-by-step submission guide included</li>
-          <li><span class="feat-icon">✓</span> Guaranteed 48-hour delivery</li>
-          <li><span class="feat-icon">✓</span> 100% of all winnings stay with you — always</li>
+          <li><span class="feat-icon">✓</span> <strong>Fully written</strong> grant application, submission-ready</li>
+          <li><span class="feat-icon">✓</span> Tailored to <strong>Amber Grant</strong>, Hello Alice &amp; more</li>
+          <li><span class="feat-icon">✓</span> Your <strong>community impact &amp; vision</strong> front and center</li>
+          <li><span class="feat-icon">✓</span> Step-by-step submission guide — <strong>zero experience needed</strong></li>
+          <li><span class="feat-icon">✓</span> <strong>48-hour delivery</strong>, guaranteed</li>
+          <li><span class="feat-icon">✓</span> <strong>100% of your winnings</strong> — no cuts, no equity, ever</li>
         </ul>
         <div class="risk-box">
-          🔒 No win = No extra cost &nbsp;·&nbsp; No equity taken &nbsp;·&nbsp; No hidden fees &nbsp;·&nbsp; No subscriptions. Ever.
+          🔒 No win = No extra cost &nbsp;·&nbsp; No equity taken &nbsp;·&nbsp; No hidden fees &nbsp;·&nbsp; No subscriptions &nbsp;·&nbsp; No BS. Ever.
         </div>
-        <a href="https://pay.airwallex.com/sghg7x7oc7k2" target="_blank" rel="noopener" class="btn-gold">Secure My $99 Draft Now →</a>
+        <a href="https://pay.airwallex.com/sghg7x7oc7k2" target="_blank" rel="noopener" class="btn-gold">Claim My $99 Grant Draft Now →</a>
         <div class="micro-lock" style="margin-top:20px">
           <span class="lock-icon">🔒</span> Secure checkout via Stripe &nbsp;·&nbsp; Instant confirmation
         </div>
@@ -1110,56 +1291,117 @@ nav::after{
 
 <!-- ═══ WHO IT'S FOR + PROOF ═══ -->
 <section id="proof">
-  <span class="sec-label reveal from-bottom">Built For You</span>
-  <h2 class="sec-title reveal from-bottom" style="transition-delay:0.1s">Serious Founders Who Refuse to Leave Money on the Table</h2>
-  <p class="sec-sub reveal from-bottom" style="transition-delay:0.2s">Especially women entrepreneurs in food, beverage, retail — and any small business with a story worth telling.</p>
+  <span class="sec-label reveal from-bottom">Who We Help Win</span>
+  <h2 class="sec-title reveal from-bottom" style="transition-delay:0.1s">Every Underdog Founder With a Story Worth Funding</h2>
+  <p class="sec-sub reveal from-bottom" style="transition-delay:0.2s">Women-owned, minority-owned, immigrant-founded, or just fiercely independent — if you built something real, there's a grant with your name on it.</p>
   <div class="gold-rule"></div>
   <div class="niches">
-    <div class="niche-card reveal from-bottom"><span class="niche-icon">☕</span><h4>Food &amp; Beverage</h4><p>Cafes, bakeries, food trucks, restaurants. We highlight your community impact and passion.</p></div>
-    <div class="niche-card reveal from-bottom" style="transition-delay:0.1s"><span class="niche-icon">🛍️</span><h4>Retail &amp; E-commerce</h4><p>Boutiques and makers. We show committees the scalable vision behind your storefront.</p></div>
-    <div class="niche-card reveal from-bottom" style="transition-delay:0.2s"><span class="niche-icon">💆</span><h4>Wellness &amp; Beauty</h4><p>Spas, studios, coaches. We articulate the transformation you create and your mission.</p></div>
-    <div class="niche-card reveal from-bottom" style="transition-delay:0.3s"><span class="niche-icon">🌱</span><h4>Any Small Business</h4><p>If you're a woman founder with a vision and a story, we can help you win. Apply today.</p></div>
+    <div class="niche-card reveal from-left">
+      <span class="niche-icon">👩🏾‍💼</span>
+      <h4>Women-Owned Businesses</h4>
+      <p>Purpose-built for the Amber Grant. We find the voice that wins.</p>
+    </div>
+    <div class="niche-card reveal from-bottom" style="transition-delay:0.1s">
+      <span class="niche-icon">✊🏾</span>
+      <h4>Black, Latino &amp; POC Founders</h4>
+      <p>Comcast RISE, Wish Local &amp; SBA programs fund your story. We make committees feel it.</p>
+    </div>
+    <div class="niche-card reveal from-bottom" style="transition-delay:0.2s">
+      <span class="niche-icon">🌎</span>
+      <h4>Immigrant &amp; First-Gen Founders</h4>
+      <p>Cross-cultural journeys win grants. We put yours on the page.</p>
+    </div>
+    <div class="niche-card reveal from-right" style="transition-delay:0.3s">
+      <span class="niche-icon">🔥</span>
+      <h4>Any Passionate Small Business</h4>
+      <p>Built something real? We help you win funding for it.</p>
+    </div>
   </div>
 
-  <span class="sec-label reveal from-bottom">Real Results</span>
-  <h2 class="sec-title reveal from-bottom" style="transition-delay:0.1s;margin-bottom:12px">Every Month $10,000 Is Awarded. Why Not Yours?</h2>
+  
+
+  <span class="sec-label reveal from-bottom">Founders Like You</span>
+  <h2 class="sec-title reveal from-bottom" style="transition-delay:0.1s;margin-bottom:12px">Real Founders. Real Stories. Real Results.</h2>
   <div class="gold-rule"></div>
   <div class="testi-grid">
     <div class="testi-card glass-card reveal from-left lift-on-scroll parallax-card" data-tilt>
       <div class="stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
-      <p class="testi-q">I completely ignored grants because I was terrified of the paperwork. SummitGrants made me sound like the visionary CEO I actually am. Best $99 I've ever spent on my business.</p>
-      <div class="testi-author"><div class="avatar av1">S</div><div><span class="author-name">Sarah T.</span><span class="author-role">Specialty Bakery Owner · Austin, TX</span></div></div>
+      <p class="testi-q">I'd been putting off applying for grants for two years — always too scared, too busy, too unsure. SummitGrants made me sound like the visionary I actually am. Best $99 I've invested in my business.</p>
+      <div class="testi-author"><div class="avatar av1">S</div><div><span class="author-name">Sarah T.</span><span class="author-role">Bakery Owner, Women-Founded · Austin, TX</span></div></div>
     </div>
     <div class="testi-card glass-card reveal from-bottom lift-on-scroll parallax-card" style="transition-delay:0.12s" data-tilt>
       <div class="stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
       <p class="testi-q">Transparent, fast, and completely stress-free. No weird recurring subscription trap. Just a great service for a flat fee. I use them every single month now.</p>
-      <div class="testi-author"><div class="avatar av2">E</div><div><span class="author-name">Elena M.</span><span class="author-role">E-commerce Founder · Miami, FL</span></div></div>
+      <div class="testi-author"><div class="avatar av2">E</div><div><span class="author-name">Elena M.</span><span class="author-role">E-commerce Founder, First-Gen · Miami, FL</span></div></div>
     </div>
     <div class="testi-card glass-card reveal from-bottom lift-on-scroll parallax-card" style="transition-delay:0.24s" data-tilt>
       <div class="stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
       <p class="testi-q">I submitted the application they wrote and teared up reading it — it captured my story perfectly. I had no idea my journey was that compelling. This service is pure magic.</p>
-      <div class="testi-author"><div class="avatar av3">M</div><div><span class="author-name">Maya R.</span><span class="author-role">Wellness Studio Owner · Denver, CO</span></div></div>
+      <div class="testi-author"><div class="avatar av3">M</div><div><span class="author-name">Maya R.</span><span class="author-role">Wellness Studio, Minority-Owned · Denver, CO</span></div></div>
     </div>
     <div class="testi-card glass-card reveal from-right lift-on-scroll parallax-card" data-tilt>
       <div class="stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
       <p class="testi-q">As someone for whom English is a second language, I was sure I'd never win a grant. SummitGrants wrote my story in a way I could only dream of. Worth every penny.</p>
-      <div class="testi-author"><div class="avatar av4">L</div><div><span class="author-name">Linh P.</span><span class="author-role">Restaurant Owner · Houston, TX</span></div></div>
+      <div class="testi-author"><div class="avatar av4">L</div><div><span class="author-name">Linh P.</span><span class="author-role">Restaurant Owner, Immigrant-Founded · Houston, TX</span></div></div>
     </div>
+  </div>
+</section>
+
+
+<!-- ═══ BEYOND AMBER GRANT ═══ -->
+<section id="beyond">
+  <span class="sec-label reveal from-bottom">More Opportunities</span>
+  <h2 class="sec-title reveal from-bottom" style="transition-delay:0.1s">The Amber Grant Is Just the Beginning</h2>
+  <p class="sec-sub reveal from-bottom" style="transition-delay:0.2s">Private grants for underrepresented founders exist across dozens of programs. Here are a few worth knowing.</p>
+  <div class="gold-rule"></div>
+  <div class="beyond-grid">
+    <div class="beyond-card glass-card reveal from-left">
+      <div class="beyond-tag">Women-Owned</div>
+      <h4>Amber Grant</h4>
+      <p>$10k/month · $25k annual · <strong style="color:var(--gold-lt)">Our flagship offer.</strong></p>
+      <div class="beyond-deadline">⏰ Deadline: March 31</div>
+    </div>
+    <div class="beyond-card glass-card reveal from-bottom" style="transition-delay:0.1s">
+      <div class="beyond-tag">All Small Businesses</div>
+      <h4>Hello Alice Grants</h4>
+      <p>Rotating grants for minority, women &amp; veteran-owned founders across the US.</p>
+      <div class="beyond-deadline">🔄 Rolling deadlines</div>
+    </div>
+    <div class="beyond-card glass-card reveal from-bottom" style="transition-delay:0.2s">
+      <div class="beyond-tag">POC &amp; Women-Owned</div>
+      <h4>Comcast RISE</h4>
+      <p>Grants + marketing for POC &amp; women-owned businesses in select US markets.</p>
+      <div class="beyond-deadline">📋 Check eligibility</div>
+    </div>
+    <div class="beyond-card glass-card reveal from-right" style="transition-delay:0.3s">
+      <div class="beyond-tag">Black-Owned</div>
+      <h4>Wish Local &amp; Others</h4>
+      <p>Wish Local, NASE &amp; LISC specifically fund Black-owned &amp; minority businesses.</p>
+      <div class="beyond-deadline">📋 Multiple deadlines</div>
+    </div>
+  </div>
+  <div class="beyond-note reveal from-bottom" style="transition-delay:0.2s">
+    <p>We tailor each application to the specific grant's criteria and judges. <strong style="color:var(--white)">Every $99 draft is built for that grant — not a copy-paste.</strong> Apply to multiple and dramatically increase your odds.</p>
+    <a href="https://pay.airwallex.com/sghg7x7oc7k2" target="_blank" rel="noopener" class="btn-gold" style="margin-top:24px;display:inline-flex">Start With Amber Grant — $99 →</a>
   </div>
 </section>
 
 <!-- ═══ FAQ ═══ -->
 <section id="faq">
-  <span class="sec-label reveal from-bottom">Questions</span>
+  <span class="sec-label reveal from-bottom">Got Questions?</span>
   <h2 class="sec-title reveal from-bottom" style="transition-delay:0.1s">Answers to What You're Wondering</h2>
   <div class="gold-rule"></div>
   <div class="faq-grid">
-    <div class="faq-item glass-card reveal from-left lift-on-scroll parallax-card"><p class="faq-q">Is this legitimate?</p><p class="faq-a">Absolutely. The Amber Grant and Hello Alice are real, established programs awarding real money to real women-owned businesses every month. SummitGrants is an independent professional writing service — not affiliated with those organizations, but expertly positioned to help you win.</p></div>
-    <div class="faq-item glass-card reveal from-right lift-on-scroll parallax-card"><p class="faq-q">Do you guarantee I'll win funding?</p><p class="faq-a">We can't guarantee a win — no one can. What we guarantee is a beautifully crafted, submission-ready application giving you the strongest possible shot. If you don't win, you owe us nothing beyond the flat $99 fee.</p></div>
+    <div class="faq-item glass-card reveal from-left lift-on-scroll parallax-card"><p class="faq-q">Is this legitimate?</p><p class="faq-a">Absolutely. The Amber Grant, Hello Alice, Comcast RISE, and similar programs are real, fully funded grants awarding real money to real small business owners every month. SummitGrants is an independent professional writing service — not affiliated with any grant organization, but built specifically to help underrepresented and underdog founders compete at the highest level.</p></div>
+    <div class="faq-item glass-card reveal from-right lift-on-scroll parallax-card"><p class="faq-q">Do you guarantee I'll win funding?</p><p class="faq-a">No one can guarantee a grant win — and anyone who does is lying to you. What we guarantee is a beautifully crafted, emotionally compelling, submission-ready application that gives you the strongest possible shot. You pay $99 for the expert writing. The rest is up to the judges — and your story is good enough.</p></div>
     <div class="faq-item glass-card reveal from-left lift-on-scroll parallax-card" style="transition-delay:0.1s"><p class="faq-q">Will you submit the application for me?</p><p class="faq-a">We deliver your fully written draft + a simple submission guide. You submit directly — this keeps you in full control and ensures compliance with each grant's individual rules. It takes under 10 minutes.</p></div>
     <div class="faq-item glass-card reveal from-right lift-on-scroll parallax-card" style="transition-delay:0.1s"><p class="faq-q">How fast do I receive my draft?</p><p class="faq-a">We guarantee delivery within 48 hours of receiving your completed intake form. We know deadlines are real and we never miss them.</p></div>
-    <div class="faq-item glass-card reveal from-left lift-on-scroll parallax-card" style="transition-delay:0.2s"><p class="faq-q">I've never applied for a grant before — is that okay?</p><p class="faq-a">Perfect — most of our clients haven't. That's exactly why we exist. We handle all the language, strategy, and storytelling. You just answer a few simple questions and let our experts do the rest.</p></div>
-    <div class="faq-item glass-card reveal from-right lift-on-scroll parallax-card" style="transition-delay:0.2s"><p class="faq-q">Can I apply for multiple grants?</p><p class="faq-a">Yes! Each application is $99 and we tailor every one to that specific grant's criteria. Many founders apply to multiple grants each month to dramatically increase their chances of winning.</p></div>
+    <div class="faq-item glass-card reveal from-left lift-on-scroll parallax-card" style="transition-delay:0.2s"><p class="faq-q">I've never applied for a grant before — is that okay?</p><p class="faq-a">Perfect — most of our clients haven't. Many are first-generation founders, immigrants, or small business owners who've never had a professional in their corner. That's exactly who we built this for. Answer a few simple questions about your business and let us handle everything else.</p></div>
+    <div class="faq-item glass-card reveal from-bottom" style="transition-delay:0.45s">
+      <p class="faq-q">Is this only for women-owned businesses?</p>
+      <p class="faq-a">Not at all. While the Amber Grant is women-only (and our most popular starting point), we also write applications for Hello Alice, Comcast RISE, NASE, Wish Local, and other programs open to <strong style="color:rgba(255,255,255,0.85)">all small business owners</strong> — including Black-owned, Latino-owned, Asian-owned, Native-owned, immigrant-founded, and veteran-owned businesses. If you have a business and a story, there's a grant we can help you win.</p>
+    </div>
+    <div class="faq-item glass-card reveal from-right lift-on-scroll parallax-card" style="transition-delay:0.2s"><p class="faq-q">Can I apply for multiple grants?</p><p class="faq-a">Yes! Each application is $99 and completely tailored to that specific grant's criteria, tone, and judges. Many founders start with Amber Grant and also apply to Hello Alice, Comcast RISE, or other programs. Every application is custom — never a copy-paste. Multiple shots, dramatically better odds.</p></div>
   </div>
 </section>
 
@@ -1167,9 +1409,9 @@ nav::after{
 <section class="final-section">
   <div class="final-halo"></div>
   <div class="final-box glass-dark reveal scale-in">
-    <span class="sec-label">Last Chance — March 2026</span>
-    <h2>Don't Leave <em>$10,000</em> on the Table This Month</h2>
-    <p>The March Food &amp; Beverage category closes <strong>March 31</strong>. We only have capacity for 14 more drafts this week. Serious founders act now — others miss out and wonder what could have been.</p>
+    <span class="sec-label">March 31 Deadline · All Founders Welcome</span>
+    <h2>Your Story Is Worth <em>$10,000.</em> Prove It.</h2>
+    <p>Amber Grant deadline: <strong style="color:var(--gold-lt)">March 31.</strong> Open to all founders. Just 14 drafts left this week.<br><br><em style="color:rgba(255,255,255,0.5);font-size:0.9rem">The difference between founders who win and those who don't? A story, professionally told.</em></p>
     <div class="final-timer">
       <div class="timer-block"><span class="timer-num" id="f-days">--</span><span class="timer-label">Days</span></div>
       <span class="timer-colon">:</span>
@@ -1179,9 +1421,12 @@ nav::after{
       <span class="timer-colon">:</span>
       <div class="timer-block"><span class="timer-num" id="f-sec">--</span><span class="timer-label">Secs</span></div>
     </div>
-    <a href="https://pay.airwallex.com/sghg7x7oc7k2" target="_blank" rel="noopener" class="btn-gold">Get My $99 Draft Before It's Gone →</a>
+    <a href="https://pay.airwallex.com/sghg7x7oc7k2" target="_blank" rel="noopener" class="btn-gold">Claim My $99 Grant Draft Now →</a>
     <div class="micro-lock">
       <span class="lock-icon">🔒</span> Secure checkout via Stripe &nbsp;·&nbsp; Instant confirmation &nbsp;·&nbsp; 48-hr delivery guaranteed
+    </div>
+    <div class="fit-check-link" style="margin-top:18px">
+      Not sure if you qualify? <a href="mailto:contact@summitgrants.co?subject=Free%20Grant%20Fit%20Check" class="fit-check-a">Get a Free Grant Fit Check →</a>
     </div>
   </div>
 </section>
@@ -1193,113 +1438,87 @@ nav::after{
   </div>
   <div>
     <strong style="color:rgba(255,255,255,0.52)">SummitGrants</strong> &nbsp;·&nbsp;
-    <a href="mailto:contact@summitgrants.co" class="email-link" id="contact-email">&#99;&#111;&#110;&#116;&#97;&#99;&#116;&#64;&#115;&#117;&#109;&#109;&#105;&#116;&#103;&#114;&#97;&#110;&#116;&#115;&#46;&#99;&#111;</a> &nbsp;·&nbsp;
+    <a href="mailto:contact@summitgrants.co?subject=Free%20Grant%20Fit%20Check" class="fit-check-a">Get a Free Grant Fit Check →</a> &nbsp;·&nbsp;
     <a href="privacy-policy.html">Privacy Policy</a> &nbsp;·&nbsp;
     <a href="terms-of-service.html">Terms of Service</a>
   </div>
   <div>© 2026 SummitGrants</div>
   <p class="footer-disclaimer">
-    SummitGrants is an independent grant writing service and is not affiliated with WomensNet (Amber Grant Foundation), Hello Alice, or any other grant organization. We charge a one-time flat fee of $99 for professional writing services only. We do not guarantee funding outcomes. Grant awards are at the sole discretion of each respective organization. Results may vary.
+    SummitGrants is an independent professional grant writing service. We are not affiliated with, endorsed by, or partnered with WomensNet (Amber Grant Foundation), Hello Alice, Comcast RISE, Wish Local, NASE, or any other grant organization mentioned on this site. We charge a one-time flat fee of $99 per application for professional writing services only. We do not guarantee funding outcomes. Grant awards are at the sole discretion of each respective grant organization. Results may vary.
   </p>
 </footer>
 
 </div>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-// ─── COUNTDOWN TIMER ───
-function getT(){
-  const d=new Date('2026-03-31T23:59:59'),n=new Date(),r=d-n;
-  if(r<=0)return{d:0,h:0,m:0,s:0};
-  return{d:Math.floor(r/864e5),h:Math.floor((r%864e5)/36e5),m:Math.floor((r%36e5)/6e4),s:Math.floor((r%6e4)/1e3)};
-}
-function p2(n){return String(n).padStart(2,'0')}
+<script>
+document.addEventListener('DOMContentLoaded', function(){
+
+// ── COUNTDOWN ──
+var deadline = new Date('2026-03-31T23:59:59');
+function pad(n){ return String(Math.max(0,n)).padStart(2,'0'); }
 function tick(){
-  const t=getT();
-  ['h-days','f-days'].forEach(id=>{const e=document.getElementById(id);if(e)e.textContent=p2(t.d)});
-  ['h-hrs','f-hrs'].forEach(id=>{const e=document.getElementById(id);if(e)e.textContent=p2(t.h)});
-  ['h-min','f-min'].forEach(id=>{const e=document.getElementById(id);if(e)e.textContent=p2(t.m)});
-  ['h-sec','f-sec'].forEach(id=>{const e=document.getElementById(id);if(e)e.textContent=p2(t.s)});
+  var diff = Math.max(0, deadline - new Date());
+  var d = Math.floor(diff / 864e5),
+      h = Math.floor((diff % 864e5) / 36e5),
+      m = Math.floor((diff % 36e5) / 6e4),
+      s = Math.floor((diff % 6e4) / 1e3);
+  var sets = [
+    ['h-days','f-days',d],
+    ['h-hrs', 'f-hrs', h],
+    ['h-min', 'f-min', m],
+    ['h-sec', 'f-sec', s]
+  ];
+  for(var i=0;i<sets.length;i++){
+    var el1=document.getElementById(sets[i][0]);
+    var el2=document.getElementById(sets[i][1]);
+    if(el1) el1.textContent=pad(sets[i][2]);
+    if(el2) el2.textContent=pad(sets[i][2]);
+  }
 }
-tick();setInterval(tick,1000);
+tick();
+setInterval(tick,1000);
 
-// ─── SCROLL REVEAL ───
-// Scroll reveal — elements are visible by default, animation is a bonus
-// Add subtle lift animation to off-screen elements only
-const revObs=new IntersectionObserver(entries=>{
-  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.remove('waiting');e.target.classList.add('up');}});
-},{threshold:0.01,rootMargin:'0px 0px -20px 0px'});
-document.querySelectorAll('.reveal').forEach(el=>{
-  const r=el.getBoundingClientRect();
-  // Only animate elements below the fold
-  if(r.top > window.innerHeight){
-    el.classList.add('from-bottom','waiting');
-    revObs.observe(el);
-  } else {
-    el.classList.add('up');
-  }
+// ── REVEAL ON SCROLL ──
+var obs=new IntersectionObserver(function(entries){
+  entries.forEach(function(e){ if(e.isIntersecting) e.target.classList.add('up'); });
+},{threshold:0.05,rootMargin:'30px 0px 0px 0px'});
+document.querySelectorAll('.reveal').forEach(function(el){
+  var r=el.getBoundingClientRect();
+  if(r.top<window.innerHeight){ el.classList.add('up'); }
+  else{ obs.observe(el); }
 });
 
-// ─── SCROLL PARALLAX LIFT ───
-// lift-on-scroll — just a subtle translateY for below-fold elements
-const liftObs=new IntersectionObserver(entries=>{
-  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('risen');});
-},{threshold:0.01});
-document.querySelectorAll('.lift-on-scroll').forEach((el,i)=>{
-  el.classList.add('risen'); // Always visible
+// ── LIFT ON SCROLL ──
+var lobs=new IntersectionObserver(function(entries){
+  entries.forEach(function(e){ if(e.isIntersecting) e.target.classList.add('risen'); });
+},{threshold:0.04,rootMargin:'20px 0px 0px 0px'});
+document.querySelectorAll('.lift-on-scroll').forEach(function(el,i){
+  var r=el.getBoundingClientRect();
+  if(r.top<window.innerHeight){ el.classList.add('risen'); }
+  else{ el.style.transitionDelay=(i%4)*0.07+'s'; lobs.observe(el); }
 });
 
-// ─── PREMIUM 3D GLASS TILT ───
-let rafId=null;
-let mouseX=0,mouseY=0;
-document.addEventListener('mousemove',ev=>{
-  mouseX=ev.clientX;mouseY=ev.clientY;
-  if(!rafId){
-    rafId=requestAnimationFrame(()=>{
-      rafId=null;
-      const cx=window.innerWidth/2,cy=window.innerHeight/2;
-      const dx=(mouseX-cx)/cx,dy=(mouseY-cy)/cy;
-      // No card tilt — shards only
-      document.querySelectorAll('.shard').forEach((el,i)=>{
-        const speed=(i+1)*0.018;
-        el.style.transform=`translate(${dx*35*speed}px,${dy*25*speed}px) rotate(${dx*20*speed}deg)`;
-        el.style.transition='transform 0.05s linear';
-      });
-      document.querySelectorAll('.orb').forEach((el,i)=>{
-        const speed=(i+1)*0.01;
-        el.style.transform=`translate(${dx*40*speed}px,${dy*30*speed}px)`;
-        el.style.transition='transform 0.1s linear';
-      });
+// ── MOUSE PARALLAX ──
+var raf=null,mx=0,my=0;
+document.addEventListener('mousemove',function(ev){
+  mx=ev.clientX; my=ev.clientY;
+  if(raf) return;
+  raf=requestAnimationFrame(function(){
+    raf=null;
+    var cx=window.innerWidth/2,cy=window.innerHeight/2;
+    var dx=(mx-cx)/cx,dy=(my-cy)/cy;
+    document.querySelectorAll('.shard').forEach(function(el,i){
+      var s=(i+1)*0.018;
+      el.style.transform='translate('+(dx*35*s)+'px,'+(dy*25*s)+'px) rotate('+(dx*20*s)+'deg)';
     });
-  }
+    document.querySelectorAll('.orb').forEach(function(el,i){
+      var s=(i+1)*0.01;
+      el.style.transform='translate('+(dx*40*s)+'px,'+(dy*30*s)+'px)';
+    });
+  });
 });
 
-// mouse leave - no tilt to reset
-
-// ─── SCROLL-DRIVEN DEPTH PARALLAX ───
-let lastScroll=window.scrollY;
-window.addEventListener('scroll',()=>{
-  const scrollY=window.scrollY;
-  lastScroll=scrollY;
-  
-  // Hero - subtle translateY only, no opacity dim, no scale
-  const hero=document.querySelector('.hero-glass');
-  if(hero&&scrollY<window.innerHeight){
-    hero.style.transform=`translateY(${scrollY*0.08}px)`;
-    hero.style.opacity=1;
-  }
-  
-  // Card scroll parallax
-  document.querySelectorAll('.glass-card').forEach((el,i)=>{
-    const rect=el.getBoundingClientRect();
-    const vh=window.innerHeight;
-    if(rect.bottom<-100||rect.top>vh+100)return;
-    const progress=(vh-rect.top)/(vh+rect.height);
-      const offset=(progress-0.5)*-10*(i%2===0?1:-0.6);
-    if(!el.classList.contains('parallax-card')){
-      el.style.transform=`translateY(${offset}px)`;
-    }
-  });
-},{passive:true});
+});
 </script>
 </body>
 </html>
