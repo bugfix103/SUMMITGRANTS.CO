@@ -1372,6 +1372,130 @@ nav::after{
   .price-big{font-size:4.2rem}
 }
 
+
+
+.grants-bar{
+  display:flex;
+  align-items:center;
+  gap:16px;
+  margin-top:32px;
+  flex-wrap:wrap;
+  justify-content:center;
+}
+.grants-bar-label{
+  font-size:10px;font-weight:700;letter-spacing:0.12em;
+  text-transform:uppercase;color:rgba(255,255,255,0.3);
+  white-space:nowrap;flex-shrink:0;
+}
+.grants-bar-items{
+  display:flex;flex-wrap:wrap;gap:8px;justify-content:center;
+  align-items:center;
+}
+.grant-chip{
+  font-size:11.5px;font-weight:600;letter-spacing:0.04em;
+  color:rgba(255,255,255,0.5);
+  background:rgba(255,255,255,0.04);
+  border:1px solid rgba(255,255,255,0.1);
+  border-radius:50px;padding:5px 13px;
+  white-space:nowrap;
+  transition:color 0.2s,border-color 0.2s,background 0.2s;
+}
+.grant-chip:hover{
+  color:rgba(255,255,255,0.8);
+  border-color:rgba(212,175,55,0.3);
+  background:rgba(212,175,55,0.06);
+}
+.amber-chip{
+  color:var(--gold-lt);
+  background:rgba(212,175,55,0.08);
+  border-color:rgba(212,175,55,0.3);
+}
+@media(max-width:600px){
+  .grants-bar{gap:10px;margin-top:24px}
+  .grants-bar-label{display:none}
+  .grant-chip{font-size:10.5px;padding:4px 11px}
+}
+
+
+/* ══ GRANT BRAND BADGES ══ */
+.grant-badges-wrap{
+  margin-top:36px;
+  text-align:center;
+}
+.grant-badges-label{
+  font-size:10.5px;font-weight:700;letter-spacing:0.14em;
+  text-transform:uppercase;color:rgba(255,255,255,0.28);
+  margin-bottom:18px;
+}
+.grant-badges-row{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  justify-content:center;
+  align-items:stretch;
+}
+.grant-badge{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  background:var(--badge-bg);
+  border:1px solid rgba(255,255,255,0.07);
+  border-left:2px solid var(--badge-accent);
+  border-radius:10px;
+  padding:10px 14px 10px 10px;
+  transition:transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+  position:relative;
+  min-width:160px;
+}
+.grant-badge:hover{
+  transform:translateY(-3px);
+  box-shadow:0 8px 24px rgba(0,0,0,0.35), 0 0 0 1px var(--badge-accent);
+  border-color:var(--badge-accent);
+}
+.badge-mark{
+  width:36px;height:36px;flex-shrink:0;
+  border-radius:8px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:11px;font-weight:900;letter-spacing:0.02em;
+  font-family:var(--sans);
+  box-shadow:0 2px 8px rgba(0,0,0,0.3);
+}
+.badge-info{text-align:left}
+.badge-name{
+  font-size:12.5px;font-weight:700;
+  color:rgba(255,255,255,0.88);
+  line-height:1.2;letter-spacing:0.01em;
+}
+.badge-sub{
+  font-size:10px;font-weight:400;
+  color:rgba(255,255,255,0.38);
+  margin-top:2px;letter-spacing:0.02em;
+}
+.badge-featured{
+  position:absolute;
+  top:-8px;right:10px;
+  font-size:9px;font-weight:700;letter-spacing:0.08em;
+  text-transform:uppercase;
+  background:linear-gradient(135deg,var(--gold),var(--gold-lt));
+  color:var(--navy-deep);
+  padding:2px 7px;border-radius:50px;
+  white-space:nowrap;
+}
+@media(max-width:600px){
+  .grant-badges-row{gap:8px}
+  .grant-badge{
+    min-width:calc(50% - 4px);
+    padding:9px 10px 9px 9px;
+  }
+  .badge-mark{width:30px;height:30px;font-size:10px;border-radius:6px}
+  .badge-name{font-size:11.5px}
+  .badge-sub{font-size:9.5px}
+  .grant-badges-label{font-size:9.5px}
+}
+@media(max-width:380px){
+  .grant-badge{min-width:100%}
+}
+
 </style>
 </head>
 <body>
@@ -1430,7 +1554,7 @@ nav::after{
     </h1>
 
     <p class="hero-sub reveal from-bottom" style="transition-delay:0.2s">
-      We turn your story into a <strong>judge-winning grant application.</strong><br><span style="font-size:0.88rem;opacity:0.75">$99 flat fee &nbsp;·&nbsp; 48-hr delivery &nbsp;·&nbsp; No win = no extra cost</span>
+      We write grant applications for <strong>women &amp; minority-owned small businesses</strong> — powerful, story-driven drafts you can submit today.<br><span style="font-size:0.86rem;opacity:0.7">$99 flat fee &nbsp;·&nbsp; No jargon &nbsp;·&nbsp; No retainer &nbsp;·&nbsp; 48-hr delivery</span>
     </p>
 
     <div class="reveal from-bottom" style="transition-delay:0.3s">
@@ -1456,6 +1580,71 @@ nav::after{
       <div class="trust-item"><span class="t-check">✓</span> No subscriptions</div>
       <div class="trust-item"><span class="t-check">✓</span> 48-hr delivery</div>
       <div class="trust-item"><span class="t-check">✓</span> Keep 100% of winnings</div>
+    </div>
+
+    <!-- ═══ GRANT BADGES ═══ -->
+    <div class="grant-badges-wrap reveal from-bottom" style="transition-delay:0.65s">
+      <p class="grant-badges-label">We write applications for</p>
+      <div class="grant-badges-row">
+
+        <div class="grant-badge" style="--badge-accent:#F5A623;--badge-bg:rgba(245,166,35,0.1)">
+          <div class="badge-mark" style="background:linear-gradient(135deg,#F5A623,#e8941a);color:#fff">A</div>
+          <div class="badge-info">
+            <div class="badge-name">Amber Grant</div>
+            <div class="badge-sub">$10k/mo · Women-owned</div>
+          </div>
+          <div class="badge-featured">★ Flagship</div>
+        </div>
+
+        <div class="grant-badge" style="--badge-accent:#00C2A0;--badge-bg:rgba(0,194,160,0.08)">
+          <div class="badge-mark" style="background:linear-gradient(135deg,#00C2A0,#00a888);color:#fff">HA</div>
+          <div class="badge-info">
+            <div class="badge-name">Hello Alice</div>
+            <div class="badge-sub">Rolling grants</div>
+          </div>
+        </div>
+
+        <div class="grant-badge" style="--badge-accent:#7B4FBF;--badge-bg:rgba(123,79,191,0.08)">
+          <div class="badge-mark" style="background:linear-gradient(135deg,#7B4FBF,#5c3899);color:#fff">iF</div>
+          <div class="badge-info">
+            <div class="badge-name">IFundWomen</div>
+            <div class="badge-sub">Women &amp; minority</div>
+          </div>
+        </div>
+
+        <div class="grant-badge" style="--badge-accent:#0088D2;--badge-bg:rgba(0,136,210,0.08)">
+          <div class="badge-mark" style="background:linear-gradient(135deg,#0088D2,#005fa0);color:#fff">CR</div>
+          <div class="badge-info">
+            <div class="badge-name">Comcast RISE</div>
+            <div class="badge-sub">POC &amp; women-owned</div>
+          </div>
+        </div>
+
+        <div class="grant-badge" style="--badge-accent:#2C7BE5;--badge-bg:rgba(44,123,229,0.08)">
+          <div class="badge-mark" style="background:linear-gradient(135deg,#2C7BE5,#1a5ab8);color:#fff">F</div>
+          <div class="badge-info">
+            <div class="badge-name">Faire</div>
+            <div class="badge-sub">Wholesale &amp; retail</div>
+          </div>
+        </div>
+
+        <div class="grant-badge" style="--badge-accent:#2D7D46;--badge-bg:rgba(45,125,70,0.08)">
+          <div class="badge-mark" style="background:linear-gradient(135deg,#2D7D46,#1f5c34);color:#fff">N</div>
+          <div class="badge-info">
+            <div class="badge-name">NASE</div>
+            <div class="badge-sub">Self-employed</div>
+          </div>
+        </div>
+
+        <div class="grant-badge" style="--badge-accent:#FF6B35;--badge-bg:rgba(255,107,53,0.08)">
+          <div class="badge-mark" style="background:linear-gradient(135deg,#FF6B35,#e0511a);color:#fff">W</div>
+          <div class="badge-info">
+            <div class="badge-name">Wish Local</div>
+            <div class="badge-sub">Minority-owned</div>
+          </div>
+        </div>
+
+      </div>
     </div>
   </div>
 </section>
