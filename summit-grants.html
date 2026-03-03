@@ -642,7 +642,7 @@ section{position:relative;padding:100px 56px}
   background:rgba(0,7,20,0.96);
   backdrop-filter:blur(28px);-webkit-backdrop-filter:blur(28px);
   border-radius:24px;
-  padding:72px 64px;text-align:center;
+  padding:56px 52px;text-align:center;
 }
 .price-tag{
   display:flex;align-items:baseline;justify-content:center;gap:4px;margin-bottom:8px;
@@ -662,9 +662,10 @@ section{position:relative;padding:100px 56px}
 }
 .features{list-style:none;text-align:left;margin-bottom:40px;display:flex;flex-direction:column;gap:12px}
 .features li{
-  display:flex;align-items:center;gap:12px;
-  font-size:0.94rem;color:rgba(255,255,255,0.76);line-height:1.45;font-weight:300;
+  display:flex;align-items:center;gap:10px;
+  font-size:0.93rem;color:rgba(255,255,255,0.76);line-height:1.4;font-weight:300;
 }
+.features li span:last-child{flex:1}
 .feat-icon{
   width:20px;height:20px;flex-shrink:0;
   background:linear-gradient(135deg,var(--gold),var(--gold-lt));
@@ -1266,6 +1267,111 @@ nav::after{
   .modal-title{font-size:1.35rem}
 }
 
+
+/* ══ STAT PEDESTAL TILES ══ */
+.stats-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:16px;
+  max-width:900px;
+  width:100%;
+  margin:52px auto 0;
+}
+.stat-tile{
+  position:relative;
+  background:linear-gradient(145deg,rgba(212,175,55,0.07) 0%,rgba(0,10,30,0.6) 100%);
+  border:1px solid rgba(212,175,55,0.2);
+  border-top:1px solid rgba(212,175,55,0.45);
+  border-radius:18px;
+  padding:32px 20px 28px;
+  text-align:center;
+  overflow:hidden;
+  transition:transform 0.4s cubic-bezier(0.34,1.56,0.64,1),box-shadow 0.4s ease;
+  cursor:default;
+}
+.stat-tile:hover{
+  transform:translateY(-8px) scale(1.03);
+  box-shadow:0 20px 50px rgba(0,0,0,0.5),0 0 30px rgba(212,175,55,0.15);
+  border-color:rgba(212,175,55,0.5);
+}
+.stat-glow{
+  position:absolute;
+  bottom:-30px;left:50%;
+  transform:translateX(-50%);
+  width:70%;height:60px;
+  background:radial-gradient(ellipse,rgba(212,175,55,0.22) 0%,transparent 70%);
+  pointer-events:none;
+  transition:opacity 0.4s;
+}
+.stat-tile:hover .stat-glow{
+  opacity:1.5;
+}
+.stat-num{
+  font-family:var(--serif);
+  font-size:clamp(2rem,4vw,2.8rem);
+  font-weight:700;
+  color:var(--gold-lt);
+  line-height:1;
+  margin-bottom:12px;
+  text-shadow:0 0 40px rgba(212,175,55,0.4);
+  letter-spacing:-0.01em;
+}
+.stat-label{
+  font-size:10.5px;
+  font-weight:600;
+  letter-spacing:0.1em;
+  text-transform:uppercase;
+  color:rgba(255,255,255,0.38);
+  line-height:1.4;
+}
+/* risen state (triggered by IntersectionObserver) */
+.stat-tile{
+  opacity:0;
+  transform:translateY(24px);
+  transition:
+    opacity 0.6s ease,
+    transform 0.6s cubic-bezier(0.34,1.56,0.64,1),
+    box-shadow 0.4s ease;
+}
+.stat-tile.risen{
+  opacity:1;
+  transform:translateY(0);
+}
+.stat-tile.risen:hover{
+  transform:translateY(-8px) scale(1.03);
+}
+
+/* Mobile */
+@media(max-width:700px){
+  .stats-grid{
+    grid-template-columns:repeat(2,1fr);
+    gap:12px;
+    margin-top:36px;
+  }
+  .stat-tile{padding:24px 14px 20px}
+  .stat-num{font-size:1.8rem}
+  .stat-label{font-size:9.5px}
+}
+@media(max-width:380px){
+  .stats-grid{grid-template-columns:1fr 1fr;gap:10px}
+  .stat-num{font-size:1.5rem}
+}
+
+/* Pricing mobile fix */
+@media(max-width:600px){
+  .pricing-inner{padding:32px 20px !important}
+  .features{gap:10px}
+  .features li{font-size:0.86rem;gap:10px}
+  .feat-icon{width:18px;height:18px;font-size:9px}
+  .risk-box{padding:16px 14px;font-size:0.82rem;line-height:1.65}
+  .price-big{font-size:5rem}
+  .price-note{font-size:0.82rem;margin-bottom:28px}
+}
+@media(max-width:380px){
+  .pricing-inner{padding:26px 14px !important}
+  .price-big{font-size:4.2rem}
+}
+
 </style>
 </head>
 <body>
@@ -1415,12 +1521,12 @@ nav::after{
         </div>
         <p class="price-note">One-time flat fee — no subscriptions, no hidden fees, ever</p>
         <ul class="features">
-          <li><span class="feat-icon">✓</span> <strong>Fully written</strong> grant application, submission-ready</li>
-          <li><span class="feat-icon">✓</span> Tailored to <strong>Amber Grant</strong>, Hello Alice &amp; more</li>
-          <li><span class="feat-icon">✓</span> Your <strong>community impact &amp; vision</strong> front and center</li>
-          <li><span class="feat-icon">✓</span> Step-by-step submission guide — <strong>zero experience needed</strong></li>
-          <li><span class="feat-icon">✓</span> <strong>48-hour delivery</strong>, guaranteed</li>
-          <li><span class="feat-icon">✓</span> <strong>100% of your winnings</strong> — no cuts, no equity, ever</li>
+          <li><span class="feat-icon">✓</span><span>Fully written, submission-ready grant application</span></li>
+          <li><span class="feat-icon">✓</span><span>Tailored to <strong>Amber Grant</strong>, Hello Alice &amp; more</span></li>
+          <li><span class="feat-icon">✓</span><span>Your community impact &amp; vision front and center</span></li>
+          <li><span class="feat-icon">✓</span><span>Step-by-step submission guide — no experience needed</span></li>
+          <li><span class="feat-icon">✓</span><span><strong>48-hour delivery</strong>, guaranteed</span></li>
+          <li><span class="feat-icon">✓</span><span><strong>100% of your winnings</strong> — no cuts, no equity, ever</span></li>
         </ul>
         <div class="risk-box">
           🔒 No win = No extra cost &nbsp;·&nbsp; No equity taken &nbsp;·&nbsp; No hidden fees &nbsp;·&nbsp; No subscriptions &nbsp;·&nbsp; No BS. Ever.
@@ -1624,28 +1730,27 @@ nav::after{
     </div>
   </div>
 
-  <!-- Key stats row for E-E-A-T -->
-  <div style="
-    display:flex;justify-content:center;gap:48px;flex-wrap:wrap;
-    margin-top:48px;padding-top:36px;
-    border-top:1px solid rgba(212,175,55,0.1);
-    text-align:center;
-  ">
-    <div>
-      <div style="font-family:var(--serif);font-size:2rem;font-weight:700;color:var(--gold-lt);line-height:1">$10,000</div>
-      <div style="font-size:11px;color:rgba(255,255,255,0.4);margin-top:6px;letter-spacing:0.06em;text-transform:uppercase">Amber Grant — Monthly Award</div>
+  <!-- Key stats — pedestal tiles -->
+  <div class="stats-grid">
+    <div class="stat-tile lift-on-scroll">
+      <div class="stat-glow"></div>
+      <div class="stat-num" data-target="10000" data-prefix="$" data-comma="true">$0</div>
+      <div class="stat-label">Amber Grant — Monthly Award</div>
     </div>
-    <div>
-      <div style="font-family:var(--serif);font-size:2rem;font-weight:700;color:var(--gold-lt);line-height:1">48 hrs</div>
-      <div style="font-size:11px;color:rgba(255,255,255,0.4);margin-top:6px;letter-spacing:0.06em;text-transform:uppercase">Guaranteed Delivery</div>
+    <div class="stat-tile lift-on-scroll">
+      <div class="stat-glow"></div>
+      <div class="stat-num" data-target="48" data-suffix=" hrs">0 hrs</div>
+      <div class="stat-label">Guaranteed Delivery</div>
     </div>
-    <div>
-      <div style="font-family:var(--serif);font-size:2rem;font-weight:700;color:var(--gold-lt);line-height:1">$99</div>
-      <div style="font-size:11px;color:rgba(255,255,255,0.4);margin-top:6px;letter-spacing:0.06em;text-transform:uppercase">Flat Fee, No Hidden Costs</div>
+    <div class="stat-tile lift-on-scroll">
+      <div class="stat-glow"></div>
+      <div class="stat-num" data-target="99" data-prefix="$">$0</div>
+      <div class="stat-label">Flat Fee, No Hidden Costs</div>
     </div>
-    <div>
-      <div style="font-family:var(--serif);font-size:2rem;font-weight:700;color:var(--gold-lt);line-height:1">100%</div>
-      <div style="font-size:11px;color:rgba(255,255,255,0.4);margin-top:6px;letter-spacing:0.06em;text-transform:uppercase">Of Winnings Stay With You</div>
+    <div class="stat-tile lift-on-scroll">
+      <div class="stat-glow"></div>
+      <div class="stat-num" data-target="100" data-suffix="%">0%</div>
+      <div class="stat-label">Of Winnings Stay With You</div>
     </div>
   </div>
 </section>
@@ -1779,6 +1884,52 @@ document.getElementById('fitCheckForm').addEventListener('submit', function(e){
     btn.disabled = false;
   });
 });
+
+
+// ── STAT COUNTER ANIMATION ──
+(function(){
+  var counters = document.querySelectorAll('.stat-num');
+  if(!counters.length) return;
+
+  function animateCounter(el){
+    var target = parseInt(el.getAttribute('data-target'), 10);
+    var prefix = el.getAttribute('data-prefix') || '';
+    var suffix = el.getAttribute('data-suffix') || '';
+    var comma  = el.getAttribute('data-comma') === 'true';
+    var start  = 0;
+    var duration = 1600;
+    var startTime = null;
+
+    function easeOut(t){ return 1 - Math.pow(1-t, 3); }
+
+    function format(n){
+      var rounded = Math.round(n);
+      if(comma) rounded = rounded.toLocaleString();
+      return prefix + rounded + suffix;
+    }
+
+    function step(timestamp){
+      if(!startTime) startTime = timestamp;
+      var elapsed = timestamp - startTime;
+      var progress = Math.min(elapsed / duration, 1);
+      el.textContent = format(easeOut(progress) * target);
+      if(progress < 1) requestAnimationFrame(step);
+      else el.textContent = format(target);
+    }
+    requestAnimationFrame(step);
+  }
+
+  var cobs = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){
+        animateCounter(entry.target);
+        cobs.unobserve(entry.target);
+      }
+    });
+  }, {threshold: 0.4});
+
+  counters.forEach(function(el){ cobs.observe(el); });
+})();
 
 // ── COUNTDOWN ──
 var deadline = new Date('2026-03-31T23:59:59');
